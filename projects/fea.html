@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suspension Mount FEA Optimization — Rayhaan Saaim</title>
+<meta name="description" content="I extended a from-scratch MATLAB finite element solver into a parametric tool that finds how thin the suspension mounting tabs can be before they yield, then cut 7.3% of their mass.">
+<meta property="og:title" content="Suspension Mount FEA Optimization — Rayhaan Saaim">
+<meta property="og:description" content="I extended a from-scratch MATLAB finite element solver into a parametric tool that finds how thin the suspension mounting tabs can be before they yield, then cut 7.3% of their mass.">
+<meta property="og:image" content="https://rsaaim.github.io/assets/img/hero/01_hero-holding-rear-suspension.jpg">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">RS</span><span class="brand-name">R.SAAIM</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="../index.html#experience">EXPERIENCE</a>
+    <a href="../index.html#projects">PROJECTS</a>
+    <a href="../index.html#about">ABOUT</a>
+    <a class="btn-resume" href="../resume.pdf">RESUME</a>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode">DARK</button>
+  </nav>
+</header>
+<main id="main">
+
+  <div class="wrap crumb"><a href="../index.html">HOME</a> / <a href="../index.html#projects">PROJECTS</a> / SUSPENSION MOUNT FEA OPTIMIZATION</div>
+  <section class="wrap proj-hero">
+    <p class="eyebrow">// HARVARD ES128 · CRIMSON MOTORSPORTS · 2024</p>
+    <h1>Suspension Mount FEA Optimization</h1>
+    <p class="lede">I extended a from-scratch MATLAB finite element solver into a parametric tool that finds how thin the suspension mounting tabs can be before they yield, then cut 7.3% of their mass.</p>
+    <div class="specs"><div><p class="k">MASS REDUCTION</p><p class="v">7.3%</p></div><div><p class="k">SAFETY FACTOR</p><p class="v">2.0</p></div><div><p class="k">ELEMENTS</p><p class="v">~50,000</p></div><div><p class="k">SWEEP</p><p class="v">25 STEPS</p></div></div>
+  </section>
+  <article class="wrap" style="padding-bottom:24px">
+<div class="prose">
+    <h2>The problem</h2>
+    <p>The control arms attach to the chassis through ball joints bolted between pairs of welded steel tabs. The tabs have to survive race loads, but every gram on a student car counts. The question: how thin can they go while staying below yield with a safety factor of 2?</p>
+    <h2>The tool</h2>
+    <p>In ES128 (Computational Solid and Structural Mechanics) we built an FEA program in MATLAB that reads Abaqus input files, classifies the element types and solves each element. I built on it so the program takes a range of tab thicknesses and a step count, rebuilds and re-constrains the model for each thickness, solves it, and plots peak stress against thickness.</p>
+    </div>
+    <div class="gallery"><figure><a href="../assets/img/fsae-fea/01_real-suspension-mount.jpg"><img src="../assets/img/fsae-fea/01_real-suspension-mount.jpg" alt="The real mounting tabs on a car" loading="lazy"></a><figcaption>The real mounting tabs on a car</figcaption></figure><figure><a href="../assets/img/fsae-fea/02_abaqus-model.jpg"><img src="../assets/img/fsae-fea/02_abaqus-model.jpg" alt="Tube, tabs, bolt and nut merged into one part" loading="lazy"></a><figcaption>Tube, tabs, bolt and nut merged into one part</figcaption></figure><figure><a href="../assets/img/fsae-fea/03_tet-mesh.jpg"><img src="../assets/img/fsae-fea/03_tet-mesh.jpg" alt="Second-order tetrahedral mesh" loading="lazy"></a><figcaption>Second-order tetrahedral mesh</figcaption></figure><figure><a href="../assets/img/fsae-fea/04_boundary-conditions-load.jpg"><img src="../assets/img/fsae-fea/04_boundary-conditions-load.jpg" alt="Fixed tube ends, load under the bolt" loading="lazy"></a><figcaption>Fixed tube ends, load under the bolt</figcaption></figure></div>
+    <div class="prose">
+    <h2>Model</h2>
+    <ul><li>Geometry: chassis tube section, left and right tabs, bolt and nut, merged into one part to avoid contact errors</li><li>Material: AISI 304 stainless (E = 190 GPa, yield 215 MPa)</li><li>Mesh: C3D10 second-order tets, about 50,000 elements</li><li>Load: 340 kg car × 3 g bump = 10,006 N, split over 16 mounts = 625 N per mount</li></ul>
+    <h2>Result</h2>
+    <p>The 3.175 mm baseline peaked around 100 MPa at the tab-to-tube joint. Sweeping from 3.175 mm down to 0.5 mm in 25 steps showed stress climbing sharply below 2.5 mm. At <strong>2.5 mm</strong> the peak was about 106 MPa, inside the safety factor of 2, for a <strong>7.3% lighter mount</strong>. Small on one car, but the same tool applies anywhere strength trades against weight or cost.</p>
+    </div>
+    <div class="gallery"><figure><a href="../assets/img/fsae-fea/05_von-mises-stress-mount.jpg"><img src="../assets/img/fsae-fea/05_von-mises-stress-mount.jpg" alt="Von Mises stress on the mount model" loading="lazy"></a><figcaption>Von Mises stress on the mount model</figcaption></figure><figure><a href="../assets/img/fsae-fea/06_thin-tab-stress-past-yield.jpg"><img src="../assets/img/fsae-fea/06_thin-tab-stress-past-yield.jpg" alt="Thin-tab case: stress climbs well past yield" loading="lazy"></a><figcaption>Thin-tab case: stress climbs well past yield</figcaption></figure><figure><a href="../assets/img/fsae-fea/07_max-stress-vs-thickness-plot.jpg"><img src="../assets/img/fsae-fea/07_max-stress-vs-thickness-plot.jpg" alt="Peak stress vs. tab thickness" loading="lazy" class="contain"></a><figcaption>Peak stress vs. tab thickness</figcaption></figure></div>
+    <div class="next-proj"><a href="../index.html#projects">&lt;&lt; ALL PROJECTS</a><a href="ej255.html">NEXT: EJ255 REBUILD &gt;&gt;</a></div>
+  </article>
+</main>
+<footer class="site-footer"><span>© 2026 RAYHAAN SAAIM</span><span>BUILT IN SOMERVILLE, MA</span></footer>
+<script src="../js/site.js"></script>
+</body>
+</html>

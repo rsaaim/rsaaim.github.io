@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FSAE Rear Suspension — Rayhaan Saaim</title>
+<meta name="description" content="I led the design, fabrication and testing of the rear suspension for Harvard&#x27;s first Formula SAE car, a regulation-compliant system tuned for handling, durability and cost.">
+<meta property="og:title" content="FSAE Rear Suspension — Rayhaan Saaim">
+<meta property="og:description" content="I led the design, fabrication and testing of the rear suspension for Harvard&#x27;s first Formula SAE car, a regulation-compliant system tuned for handling, durability and cost.">
+<meta property="og:image" content="https://rsaaim.github.io/assets/img/hero/01_hero-holding-rear-suspension.jpg">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">RS</span><span class="brand-name">R.SAAIM</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="../index.html#experience">EXPERIENCE</a>
+    <a href="../index.html#projects">PROJECTS</a>
+    <a href="../index.html#about">ABOUT</a>
+    <a class="btn-resume" href="../resume.pdf">RESUME</a>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode">DARK</button>
+  </nav>
+</header>
+<main id="main">
+
+  <div class="wrap crumb"><a href="../index.html">HOME</a> / <a href="../index.html#projects">PROJECTS</a> / FSAE REAR SUSPENSION</div>
+  <section class="wrap proj-hero">
+    <p class="eyebrow">// SENIOR CAPSTONE · CRIMSON MOTORSPORTS · 2024–25</p>
+    <h1>FSAE Rear Suspension</h1>
+    <p class="lede">I led the design, fabrication and testing of the rear suspension for Harvard's first Formula SAE car, a regulation-compliant system tuned for handling, durability and cost.</p>
+    <div class="specs"><div><p class="k">TYPE</p><p class="v">PUSHROD DOUBLE WISHBONE</p></div><div><p class="k">STATIC CAMBER</p><p class="v">−1.25°</p></div><div><p class="k">HUB</p><p class="v">7075 AL</p></div><div><p class="k">UPRIGHT</p><p class="v">6061 AL</p></div></div>
+  </section>
+  <article class="wrap" style="padding-bottom:24px">
+<div class="prose">
+    <h2>Context</h2>
+    <p>Harvard had never fielded a Formula SAE team. Seven seniors split the car into capstone projects (chassis, steering, powertrain, aero, and my rear suspension) so the club would start with real hardware instead of a blank sheet. The target was FSAE's internal-combustion class.</p>
+    <h2>Architecture</h2>
+    <p>I compared MacPherson strut, direct-acting double wishbone, pullrod and pushrod layouts and chose a <strong>double wishbone pushrod</strong> system. It moves the springs and dampers inboard for better aero and protection, adds adjustability through the rocker, and packages cleanly above the drivetrain.</p>
+    </div>
+    <div class="gallery"><figure><a href="../assets/img/fsae-suspension/08_cad-assembly-labeled.jpg"><img src="../assets/img/fsae-suspension/08_cad-assembly-labeled.jpg" alt="Final CAD assembly, labeled" loading="lazy" class="contain"></a><figcaption>Final CAD assembly, labeled</figcaption></figure><figure><a href="../assets/img/fsae-suspension/14_cad-suspension-on-chassis.jpg"><img src="../assets/img/fsae-suspension/14_cad-suspension-on-chassis.jpg" alt="Suspension on the chassis rear bulkhead" loading="lazy" class="contain"></a><figcaption>Suspension on the chassis rear bulkhead</figcaption></figure><figure><a href="../assets/img/fsae-suspension/09_cad-hub-upright-render.jpg"><img src="../assets/img/fsae-suspension/09_cad-hub-upright-render.jpg" alt="Hub and upright render" loading="lazy" class="contain"></a><figcaption>Hub and upright render</figcaption></figure></div>
+    <div class="prose">
+    <h2>Geometry</h2>
+    <p>The system is built around the Goodyear D2704 20.0x7.0-13 tire. Using SolidWorks sketches and a MATLAB four-bar linkage model, I tuned camber through bump, rebound and body roll:</p>
+    <ul><li>Static camber of <strong>−1.25°</strong> for peak grip</li><li>Camber never goes positive anywhere in wheel travel</li><li>Wheel halves and offsets chosen to minimize scrub radius</li><li>Camber gain optimized against the control-arm pickup points and rear bulkhead geometry</li></ul>
+    <p>Packaging kept moving the pickup points, so I re-ran the camber analysis against my spec each time and worked with the chassis engineer to lock the bulkhead for his torsional-stiffness FEA.</p>
+    </div>
+    <div class="gallery wide"><figure><a href="../assets/img/fsae-suspension/15_geometry-4-bar-sketch.jpg"><img src="../assets/img/fsae-suspension/15_geometry-4-bar-sketch.jpg" alt="Four-bar linkage geometry sketch" loading="lazy" class="contain"></a><figcaption>Four-bar linkage geometry sketch</figcaption></figure><figure><a href="../assets/img/fsae-suspension/16_camber-diagrams.jpg"><img src="../assets/img/fsae-suspension/16_camber-diagrams.jpg" alt="Camber in bump and roll" loading="lazy" class="contain"></a><figcaption>Camber in bump and roll</figcaption></figure></div>
+    <div class="prose">
+    <h2>Components &amp; machining</h2>
+    <p><strong>Wheel hub:</strong> machined from 7075 aluminum on the manual lathe and mill, with some programmed features. Two ball bearings sit in a stacked configuration; the hub carries the inner races, the brake rotor (RCV floating rotor kit) and the CV axle's tripod mount, which the hub cap retains.</p>
+    <p><strong>Upright:</strong> 6061 aluminum, waterjet-cut outline then finished on the manual mill. An interference fit plus a lip holds both bearing outer races, with mounts for the Wilwood PS1 caliper, both wishbones, the pushrod and the toe link.</p>
+    <p><strong>Linkages:</strong> steel tubing notched, fixtured to prevent warping, and TIG-welded to rod-end inserts and bearing cups turned on the lathe.</p>
+    </div>
+    <div class="gallery"><figure><a href="../assets/img/fsae-suspension/10_cad-wheel-hub-labeled.jpg"><img src="../assets/img/fsae-suspension/10_cad-wheel-hub-labeled.jpg" alt="Wheel hub assembly" loading="lazy" class="contain"></a><figcaption>Wheel hub assembly</figcaption></figure><figure><a href="../assets/img/fsae-suspension/12_cad-hub-exploded.jpg"><img src="../assets/img/fsae-suspension/12_cad-hub-exploded.jpg" alt="Hub stack, exploded" loading="lazy" class="contain"></a><figcaption>Hub stack, exploded</figcaption></figure><figure><a href="../assets/img/fsae-suspension/11_cad-upright-labeled.jpg"><img src="../assets/img/fsae-suspension/11_cad-upright-labeled.jpg" alt="Upright mounting points" loading="lazy" class="contain"></a><figcaption>Upright mounting points</figcaption></figure><figure><a href="../assets/img/fsae-suspension/21_lathe-turning-hub.jpg"><img src="../assets/img/fsae-suspension/21_lathe-turning-hub.jpg" alt="Turning the hub on the lathe" loading="lazy"></a><figcaption>Turning the hub on the lathe</figcaption></figure><figure><a href="../assets/img/fsae-suspension/19_machined-wheel-hub.jpg"><img src="../assets/img/fsae-suspension/19_machined-wheel-hub.jpg" alt="Finished 7075 wheel hub" loading="lazy"></a><figcaption>Finished 7075 wheel hub</figcaption></figure><figure><a href="../assets/img/fsae-suspension/22_machined-upright.jpg"><img src="../assets/img/fsae-suspension/22_machined-upright.jpg" alt="Machined 6061 upright" loading="lazy"></a><figcaption>Machined 6061 upright</figcaption></figure><figure><a href="../assets/img/fsae-suspension/06_wishbone-weld-fixture.jpg"><img src="../assets/img/fsae-suspension/06_wishbone-weld-fixture.jpg" alt="Wishbone weld fixture" loading="lazy"></a><figcaption>Wishbone weld fixture</figcaption></figure><figure><a href="../assets/img/fsae-suspension/07_tig-welding.jpg"><img src="../assets/img/fsae-suspension/07_tig-welding.jpg" alt="TIG welding the linkages" loading="lazy"></a><figcaption>TIG welding the linkages</figcaption></figure><figure><a href="../assets/img/fsae-suspension/26_finished-wishbones.jpg"><img src="../assets/img/fsae-suspension/26_finished-wishbones.jpg" alt="Finished wishbones" loading="lazy"></a><figcaption>Finished wishbones</figcaption></figure></div>
+    <div class="prose">
+    <h2>Testing</h2>
+    <p>I built a test rig whose mounts reproduce the chassis pickup points exactly, so I could measure camber through roll and compare it with the model, then checked wheel alignment on the car.</p>
+    </div>
+    <div class="gallery"><figure><a href="../assets/img/fsae-suspension/02_suspension-on-test-rig.jpg"><img src="../assets/img/fsae-suspension/02_suspension-on-test-rig.jpg" alt="Assembly on the camber test rig" loading="lazy"></a><figcaption>Assembly on the camber test rig</figcaption></figure><figure><a href="../assets/img/fsae-suspension/29_dynamic-camber-test.jpg"><img src="../assets/img/fsae-suspension/29_dynamic-camber-test.jpg" alt="Measuring dynamic camber in roll" loading="lazy"></a><figcaption>Measuring dynamic camber in roll</figcaption></figure><figure><a href="../assets/img/fsae-suspension/05_fitting-wheel-to-chassis.jpg"><img src="../assets/img/fsae-suspension/05_fitting-wheel-to-chassis.jpg" alt="Fitting the wheel on the chassis" loading="lazy"></a><figcaption>Fitting the wheel on the chassis</figcaption></figure><figure><a href="../assets/img/fsae-suspension/01_rayhaan-with-chassis-and-suspension.jpg"><img src="../assets/img/fsae-suspension/01_rayhaan-with-chassis-and-suspension.jpg" alt="Final assembly on the chassis" loading="lazy"></a><figcaption>Final assembly on the chassis</figcaption></figure></div>
+    <div class="next-proj"><a href="../index.html#projects">&lt;&lt; ALL PROJECTS</a><a href="fea.html">NEXT: MOUNT FEA &gt;&gt;</a></div>
+  </article>
+</main>
+<footer class="site-footer"><span>© 2026 RAYHAAN SAAIM</span><span>BUILT IN SOMERVILLE, MA</span></footer>
+<script src="../js/site.js"></script>
+</body>
+</html>
