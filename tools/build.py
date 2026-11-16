@@ -40,7 +40,7 @@ def head(title, desc, base):
     <a href="{base}index.html#experience">EXPERIENCE</a>
     <a href="{base}index.html#projects">PROJECTS</a>
         <a href="{base}formula-sae.html">FORMULA SAE</a>
-    <a class="btn-resume" href="{base}resume.pdf">RESUME</a>
+    <a class="btn-resume" href="{base}resume.pdf" target="_blank" rel="noopener">RESUME</a>
     <button class="theme-toggle" type="button" aria-label="Switch to dark mode">DARK</button>
   </nav>
 </header>
@@ -163,7 +163,7 @@ def index():
       <span class="h">&gt; CONTACT</span>
       <a href="mailto:{EMAIL}">EMAIL ........ {EMAIL}</a>
       <a href="{LINKEDIN}">LINKEDIN ..... /in/rayhaansaaim</a>
-      <a href="resume.pdf">RESUME ....... download PDF</a>
+      <a href="resume.pdf" target="_blank" rel="noopener">RESUME ....... download PDF</a>
     </div>
   </section>
 """
