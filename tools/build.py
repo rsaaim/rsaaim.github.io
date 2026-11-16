@@ -169,14 +169,6 @@ def index():
 
 {crimson_html}
 
-  <section class="wrap section" id="contact">
-    <div class="contact-box">
-      <span class="h">&gt; CONTACT</span>
-      <a href="mailto:{EMAIL}">EMAIL ........ {EMAIL}</a>
-      <a href="{LINKEDIN}">LINKEDIN ..... /in/rayhaansaaim</a>
-      <a href="resume.pdf" target="_blank" rel="noopener">RESUME ....... download PDF</a>
-    </div>
-  </section>
 """
     return head("Rayhaan Saaim — Mechanical Engineer",
                 "Mechanical engineering portfolio of Rayhaan Saaim: production robotics hardware, FSAE suspension, FEA, and engine rebuilds.", b) + body + foot(b)
