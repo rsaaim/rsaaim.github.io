@@ -109,10 +109,10 @@ def index():
     ]
     specs = {
         "projects/fsae-suspension.html": [("LAYOUT", "DOUBLE WISHBONE PUSHROD"), ("CAD", "SOLIDWORKS · MATLAB"), ("MFG", "LATHE · MILL · WATERJET · TIG")],
-        "projects/fikst-2024.html": [("SCOPE", "TEST FIXTURES · TOOLING"), ("DFM", "INJECTION-MOLDED WEAR PAD"), ("CAD", "SOLIDWORKS · DRAWINGS")],
-        "projects/lincoln.html": [("SCOPE", "MACHINE CONVERSION"), ("SWAP", "BRUSHLESS MOTOR · PCB"), ("BUILT", "AUTO IDLE · PORTABILITY KIT")],
+        "projects/fikst-2024.html": [("SCOPE", "TEST FIXTURES · PROTOTYPING · TOOLING"), ("SKILLS", "SOLIDWORKS · DRAWINGS · DATA ACQUISITION")],
+        "projects/lincoln.html": [("SCOPE", "MACHINE CONVERSION"), ("SWAP", "BRUSHLESS MOTOR · PCB"), ("BUILT", "WIRING SCHEMATICS · PORTABILITY KIT")],
         "projects/fea.html": [("TOOLS", "MATLAB · ABAQUS"), ("RESULT", "7.3% LIGHTER @ SF 2.0"), ("SWEEP", "25 STEPS · ~50K ELEMENTS")],
-        "projects/ej255.html": [("DONOR", "2005 OUTBACK 2.5 XT"), ("WORK", "BEARINGS · VALVES · HONE"), ("TARGET", "2007 SUBARU WRX")],
+        "projects/ej255.html": [("DONOR", "SUBARU OUTBACK 2.5 XT"), ("YEAR", "2005"), ("WORK", "BEARINGS · VALVES · HONE")],
         "projects/raynmaker.html": [("CAD", "SOLIDWORKS"), ("MFG", "LASER · MILL · 3D PRINT · MOLD"), ("DRIVE", "REAR WHEELS · SERVO SCOOP")],
     }
     def card_spec(h):
