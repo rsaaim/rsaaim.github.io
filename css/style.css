@@ -264,3 +264,6 @@ a:hover { color: var(--accent-hover); }
 .xp-body { justify-content: center; }
 .img-caption a.acc { text-decoration: none; }
 .img-caption a.acc:hover { text-decoration: underline; color: #FFFFFF; }
+/* hide the text caret on non-editable content (shows when caret browsing is on) */
+body { caret-color: transparent; }
+input, textarea, [contenteditable="true"] { caret-color: auto; }
