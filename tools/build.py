@@ -783,17 +783,23 @@ def formula_sae_top():
 HIDDEN_PAGES = {"fikst-robotics"}  # on hold: Rayhaan will add content later
 
 
+def new_tab_external(html):
+    """Open the SEAS 'Zooming into the future' article links in a new tab."""
+    import re as _re
+    return _re.sub(r'(<a href="https?://seas\.harvard\.edu[^"]*")(?![^>]*target=)', r'\1 target="_blank" rel="noopener"', html)
+
+
 def main():
     os.makedirs(os.path.join(ROOT, "projects"), exist_ok=True)
     with open(os.path.join(ROOT, "index.html"), "w") as f:
-        f.write(index())
+        f.write(new_tab_external(index()))
     for slug, html in pages():
         if slug in HIDDEN_PAGES:
             continue
         with open(os.path.join(ROOT, "projects", slug + ".html"), "w") as f:
-            f.write(html)
+            f.write(new_tab_external(html))
     with open(os.path.join(ROOT, "formula-sae.html"), "w") as f:
-        f.write(formula_sae_top())
+        f.write(new_tab_external(formula_sae_top()))
     for stale in ["crimson-motorsports"] + sorted(HIDDEN_PAGES):
         path = os.path.join(ROOT, "projects", stale + ".html")
         if os.path.exists(path):
