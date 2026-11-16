@@ -50,7 +50,20 @@ def head(title, desc, base):
 
 def foot(base):
     return f"""</main>
-<footer class="site-footer"><span>© 2026 RAYHAAN SAAIM</span></footer>
+<footer class="title-block" aria-label="Site footer">
+  <div class="tb">
+    <div class="tb-cell tb-title"><span class="tb-k">TITLE</span><span class="tb-v">{{TB_TITLE}}</span></div>
+    <div class="tb-cell"><span class="tb-k">DWG NO.</span><span class="tb-v">{{TB_DWG}}</span></div>
+    <div class="tb-cell"><span class="tb-k">REV</span><span class="tb-v">C</span></div>
+    <div class="tb-cell"><span class="tb-k">SHEET</span><span class="tb-v">{{TB_SHEET}}</span></div>
+    <div class="tb-cell"><span class="tb-k">DRAWN BY</span><span class="tb-v">R. SAAIM</span></div>
+    <div class="tb-cell"><span class="tb-k">EMAIL</span><a class="tb-v" href="mailto:rsaaim@gmail.com">rsaaim@gmail.com</a></div>
+    <div class="tb-cell"><span class="tb-k">LINKEDIN</span><a class="tb-v" href="https://www.linkedin.com/in/rayhaansaaim/" target="_blank" rel="noopener">/in/rayhaansaaim</a></div>
+    <div class="tb-cell"><span class="tb-k">RESUME</span><a class="tb-v" href="{base}resume.pdf" target="_blank" rel="noopener">DOWNLOAD PDF</a></div>
+    <div class="tb-cell tb-wide"><span class="tb-k">NOTES</span><span class="tb-v">UNLESS OTHERWISE SPECIFIED: DIMENSIONS IN MM · © 2026 RAYHAAN SAAIM</span></div>
+    <div class="tb-cell"><span class="tb-k">SCALE</span><span class="tb-v">1:1</span></div>
+  </div>
+</footer>
 <script src="{base}js/site.js"></script>
 </body>
 </html>
@@ -783,6 +796,21 @@ def formula_sae_top():
 HIDDEN_PAGES = {"fikst-robotics"}  # on hold: Rayhaan will add content later
 
 
+SHEETS = ["index", "fsae-suspension", "fea", "ej255", "fikst-2024", "lincoln", "raynmaker", "formula-sae"]
+
+
+def title_block(html, slug):
+    """Fill the engineering-drawing title block in the footer for this page."""
+    import re as _re
+    m = _re.search(r"<title>(.*?)( — Rayhaan Saaim)?</title>", html)
+    title = (m.group(1) if m else "Portfolio").upper()
+    if slug == "index":
+        title = "MECHANICAL ENGINEERING PORTFOLIO"
+    n = SHEETS.index(slug) + 1 if slug in SHEETS else 1
+    return (html.replace("{TB_TITLE}", title).replace("{TB_DWG}", f"RS-{n:03d}")
+                .replace("{TB_SHEET}", f"{n} OF {len(SHEETS)}"))
+
+
 def new_tab_external(html):
     """Open the SEAS 'Zooming into the future' article links in a new tab."""
     import re as _re
@@ -792,14 +820,14 @@ def new_tab_external(html):
 def main():
     os.makedirs(os.path.join(ROOT, "projects"), exist_ok=True)
     with open(os.path.join(ROOT, "index.html"), "w") as f:
-        f.write(new_tab_external(index()))
+        f.write(title_block(new_tab_external(index()), "index"))
     for slug, html in pages():
         if slug in HIDDEN_PAGES:
             continue
         with open(os.path.join(ROOT, "projects", slug + ".html"), "w") as f:
-            f.write(new_tab_external(html))
+            f.write(title_block(new_tab_external(html), slug))
     with open(os.path.join(ROOT, "formula-sae.html"), "w") as f:
-        f.write(new_tab_external(formula_sae_top()))
+        f.write(title_block(new_tab_external(formula_sae_top()), "formula-sae"))
     for stale in ["crimson-motorsports"] + sorted(HIDDEN_PAGES):
         path = os.path.join(ROOT, "projects", stale + ".html")
         if os.path.exists(path):
