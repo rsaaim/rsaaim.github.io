@@ -27,6 +27,7 @@ def head(title, desc, base):
 <meta property="og:image" content="https://rsaaim.github.io/assets/img/hero/01_hero-holding-rear-suspension.jpg">
 <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml">
 <script>try{{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}}catch(e){{}}</script>
+<script>try{{var h=document.documentElement,p=location.pathname;if((p==='/'||p.slice(-11)==='/index.html')&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!sessionStorage.getItem('booted'))h.classList.add('boot');}}catch(e){{}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="{FONTS}" rel="stylesheet">
@@ -129,7 +130,7 @@ def index():
     <div class="hero-copy">
       <p class="eyebrow">// MECHANICAL ENGINEERING PORTFOLIO</p>
       <h1>Rayhaan<br>Saaim</h1>
-      <div class="readout"><span class="k">ROLE</span><span>MECHANICAL ENGINEER I</span><span class="k">LOCATION</span><span>BOSTON, MA</span></div>
+      <div class="readout"><span class="k">ROLE</span><span data-scramble>MECHANICAL ENGINEER I</span><span class="k">LOCATION</span><span data-scramble>BOSTON, MA</span></div>
 {intro_html}
     </div>
     <figure class="bracket-frame"><span class="br-b" aria-hidden="true"></span>

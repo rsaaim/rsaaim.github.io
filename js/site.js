@@ -34,3 +34,49 @@
   }, { threshold: 0.12 });
   items.forEach(function (el) { io.observe(el); });
 })();
+
+// Homepage boot-up: type the name, scramble the readout values, then mark the session as booted.
+(function () {
+  var root = document.documentElement;
+  if (!root.classList.contains('boot')) return;
+  try { sessionStorage.setItem('booted', '1'); } catch (e) {}
+  var h1 = document.querySelector('.hero h1');
+  if (h1) {
+    var lines = h1.innerHTML.split(/<br\s*\/?>/i).map(function (t) { return t.replace(/<[^>]+>/g, '').trim(); });
+    h1.setAttribute('aria-label', lines.join(' '));
+    h1.innerHTML = '';
+    var spans = [];
+    lines.forEach(function (line, li) {
+      if (li) h1.appendChild(document.createElement('br'));
+      line.split('').forEach(function (ch) {
+        var s = document.createElement('span'); s.textContent = ch; s.style.visibility = 'hidden';
+        s.setAttribute('aria-hidden', 'true'); h1.appendChild(s); spans.push(s);
+      });
+    });
+    var caret = document.createElement('span'); caret.className = 'type-caret'; caret.setAttribute('aria-hidden', 'true');
+    h1.style.animation = 'none'; h1.style.visibility = 'visible';
+    var i = 0;
+    setTimeout(function step() {
+      if (i < spans.length) {
+        spans[i].style.visibility = 'visible';
+        spans[i].after(caret);
+        i++; setTimeout(step, 55);
+      } else {
+        setTimeout(function () { caret.remove(); }, 1200);
+      }
+    }, 200);
+  }
+  var glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#/<>';
+  document.querySelectorAll('[data-scramble]').forEach(function (el, k) {
+    var final = el.textContent, frame = 0, total = 14;
+    setTimeout(function tick() {
+      frame++;
+      var settled = Math.floor(final.length * frame / total);
+      el.textContent = final.split('').map(function (c, j) {
+        return j < settled || c === ' ' ? c : glyphs[Math.floor(Math.random() * glyphs.length)];
+      }).join('');
+      if (frame < total) setTimeout(tick, 40); else el.textContent = final;
+    }, 850 + k * 160);
+  });
+  setTimeout(function () { root.classList.remove('boot'); }, 3500);
+})();
