@@ -137,25 +137,40 @@
   document.addEventListener('mouseleave', function () { r.classList.remove('on'); });
 })();
 
-// Boot-up: intro paragraphs descramble into place (left to right), staggered like the readout.
+// Boot-up: intro paragraphs descramble in place. Each character keeps its real width
+// (the true letter stays in the layout, invisible), so lines never re-wrap and the page never jumps.
 (function () {
   if (!document.documentElement.classList.contains('boot')) return;
-  var pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#/<>';
+  var pool = 'abcdefghijklmnopqrstuvwxyz0123456789';
   var rnd = function () { return pool[Math.floor(Math.random() * pool.length)]; };
-  var starts = [2500, 2760, 3030, 3290], dur = 1200, step = 45;
+  var starts = [2500, 2760, 3030, 3290], dur = 1100, step = 60;
   document.querySelectorAll('.hero .lede').forEach(function (el, k) {
-    var final = el.textContent, chars = final.split('');
+    var final = el.textContent;
     el.setAttribute('aria-label', final);
-    var scrambled = function (settled) {
-      return chars.map(function (c, j) { return j < settled || c === ' ' ? c : rnd(); }).join('');
-    };
-    el.textContent = scrambled(0);
+    el.innerHTML = '';
+    var cells = [];
+    final.split('').forEach(function (c) {
+      var s = document.createElement('span');
+      s.textContent = c;
+      if (c !== ' ') {
+        s.className = 'sc s';
+        s.setAttribute('aria-hidden', 'true');
+        s.dataset.g = rnd();
+        cells.push({ el: s, at: Math.random() * dur });
+      }
+      el.appendChild(s);
+    });
     var t0 = null;
     setTimeout(function tick() {
       if (t0 === null) t0 = Date.now();
-      var p = Math.min(1, (Date.now() - t0) / dur);
-      el.textContent = p >= 1 ? final : scrambled(Math.floor(chars.length * p));
-      if (p < 1) setTimeout(tick, step);
+      var t = Date.now() - t0, left = 0;
+      cells.forEach(function (c) {
+        if (!c.done) {
+          if (t >= c.at) { c.el.classList.remove('s'); c.done = true; }
+          else { c.el.dataset.g = rnd(); left++; }
+        }
+      });
+      if (left) setTimeout(tick, step); else el.textContent = final;
     }, starts[k] !== undefined ? starts[k] : 3290 + (k - 3) * 260);
   });
 })();
