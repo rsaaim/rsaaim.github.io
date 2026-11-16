@@ -514,6 +514,155 @@ def pages():
     ]
 
 
+LAYOUT = os.path.join(ROOT, "tools", "layout")
+NAV_WORDS = {"Home", "Resume", "Projects"}
+
+
+def img_names(key):
+    d = os.path.join(ROOT, "assets", "img", "site", key)
+    names = {}
+    for f in os.listdir(d):
+        m = re.match(r"^.+?_(\d\d)", f)
+        if m:
+            names[int(m.group(1))] = f
+    return names
+
+
+def render_layout(layout_file, key, base, title, skip_title=True):
+    L = json.load(open(os.path.join(LAYOUT, layout_file)))
+    names = img_names(key)
+    rows = [row for sec in L["sections"] for row in sec]
+    out = []
+    for ri, row in enumerate(rows):
+        texts = [strip_tags(x.get("v", "")) for c in row for x in c["content"] if x["t"] != "img"]
+        if texts and all(t in NAV_WORDS or t.startswith("Email:") for t in texts):
+            continue  # old site footer
+        if any(t.startswith("Email:") for t in texts):
+            continue
+        cols_html = ""
+        for c in row:
+            content = c["content"]
+            if ri < 3 and skip_title:
+                content = [x for x in content if x["t"] != "h1"]
+            if not content:
+                continue
+            start = max(1, round((c["l"] - 48) / 76.6) + 1)
+            span = max(1, min(13 - start, round(c["w"] / 76.6)))
+            inner, lst = [], []
+
+            def flush():
+                if not lst:
+                    return
+                html, depth = "", 0
+                for lvl, v in lst:
+                    lvl = max(lvl, 1)
+                    if lvl > depth:
+                        html += "<ul>" * (lvl - depth)
+                    else:
+                        html += "</li>"
+                        while depth > lvl:
+                            html += "</ul></li>"; depth -= 1
+                    depth = lvl
+                    html += f"<li>{v}"
+                html += "</li>"
+                while depth > 1:
+                    html += "</ul></li>"; depth -= 1
+                inner.append(html + "</ul>")
+                lst.clear()
+
+            i = 0
+            while i < len(content):
+                x = content[i]; t = x["t"]
+                if t == "img":
+                    flush()
+                    name = names.get(x["i"])
+                    if not name:
+                        i += 1; continue
+                    cap = ""
+                    if i + 1 < len(content) and content[i + 1]["t"] == "p" and len(strip_tags(content[i + 1]["v"])) <= 100:
+                        cap = content[i + 1]["v"]; i += 1
+                        while i + 1 < len(content) and content[i + 1]["t"] == "p" and (strip_tags(cap).rstrip().endswith("-") or strip_tags(content[i + 1]["v"]).startswith("Deformation") or len(strip_tags(content[i + 1]["v"])) < 20):
+                            cap = cap.rstrip() + " " + content[i + 1]["v"]; i += 1
+                    src = f"{base}assets/img/site/{key}/{name}"
+                    href = x.get("href") or src
+                    alt = escape(strip_tags(cap)) if cap else escape(title)
+                    inner.append(f'<figure class="lfig"><a href="{href}"><img src="{src}" alt="{alt}" loading="lazy"></a>'
+                                 + (f"<figcaption>{cap}</figcaption>" if cap else "") + "</figure>")
+                elif t == "iframe":
+                    flush()
+                    inner.append(f'<div class="video"><iframe src="{x["src"]}" allow="autoplay" allowfullscreen loading="lazy" title="Video"></iframe></div>')
+                elif t == "li":
+                    lst.append((x.get("lvl", 1), x["v"]))
+                else:
+                    flush()
+                    v = x["v"]; txt = strip_tags(v)
+                    cls = ' class="center"' if x.get("c") else ""
+                    if t == "h2" or (t == "p" and (MONTH_HEAD.search(txt) or txt == "Acknowledgements")):
+                        inner.append(f"<h2{cls}>{v}</h2>")
+                    elif t in ("h1", "h3"):
+                        inner.append(f"<h3{cls}>{v}</h3>")
+                    elif ROSTER.match(txt):
+                        inner.append(f'<p class="roster">{v}</p>')
+                    else:
+                        inner.append(f"<p{cls}>{v}</p>")
+                i += 1
+            flush()
+            cols_html += f'<div class="lcol" style="grid-column:{start} / span {span}">{"".join(inner)}</div>'
+        if cols_html:
+            out.append(f'<div class="lrow">{cols_html}</div>')
+    return "\n".join(out)
+
+
+def layout_page(slug, layout_file, key, title, eyebrow, spec_pairs, nxt):
+    b = "../"
+    body = render_layout(layout_file, key, b, title)
+    nxt_html = f'<div class="next-proj"><a href="../index.html#projects">&lt;&lt; ALL PROJECTS</a><a href="{nxt[0]}">{nxt[1]} &gt;&gt;</a></div>'
+    html = head(f"{title} — Rayhaan Saaim", f"{title}: a project by Rayhaan Saaim, mechanical engineer.", b) + f"""
+  <div class="wrap crumb"><a href="../index.html">HOME</a> / <a href="../index.html#projects">PROJECTS</a> / {escape(title.upper())}</div>
+  <section class="wrap proj-hero">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{escape(title)}</h1>
+    {specs(spec_pairs) if spec_pairs else ""}
+  </section>
+  <article class="wrap layout" style="padding-bottom:24px">
+{body}
+    {nxt_html}
+  </article>
+"""
+    return slug, html + foot(b)
+
+
+_old_pages2 = pages
+
+
+def pages():
+    prev = dict(_old_pages2())
+    return [
+        layout_page("fsae-suspension", "layout-fsae-rear-suspension.json", "fsae-rear-suspension", "FSAE Rear Suspension",
+                    "// SENIOR CAPSTONE · CRIMSON MOTORSPORTS FORMULA SAE · 2024–2025",
+                    [("TYPE", "PUSHROD DOUBLE WISHBONE"), ("STATIC CAMBER", "−1.25°"), ("HUB", "7075 AL"), ("UPRIGHT", "6061 AL")],
+                    ("fea.html", "NEXT: SUSPENSION MOUNTING FEA")),
+        layout_page("fea", "layout-fsae-suspension-mounting-fea.json", "fsae-fea", "FSAE Suspension Mounting FEA",
+                    "// CRIMSON MOTORSPORTS FORMULA SAE · FEA COURSE FINAL PROJECT · 2024",
+                    [("MASS REDUCTION", "7.3%"), ("SAFETY FACTOR", "2.0"), ("ELEMENTS", "~50,000"), ("SWEEP", "25 STEPS")],
+                    ("ej255.html", "NEXT: EJ255 ENGINE REBUILD")),
+        layout_page("ej255", "layout-ej255-engine-rebuild.json", "ej255", "EJ255 Engine Rebuild", "// PERSONAL PROJECT · 2024-25",
+                    [("ENGINE", "EJ255 TURBO"), ("DONOR", "'05 OUTBACK XT"), ("BORES", "45° HONE"), ("TARGET", "'07 WRX")],
+                    ("crimson-motorsports.html", "NEXT: FORMULA SAE")),
+        layout_page("crimson-motorsports", "layout-formula-sae.json", "formula-sae", "Formula SAE",
+                    "// HISTORY · CRIMSON MOTORSPORTS FORMULA SAE · FOUNDED 2024", None,
+                    ("fikst-robotics.html", "NEXT: FIKST ROBOTICS")),
+        ("fikst-robotics", prev["fikst-robotics"]),
+        ("fikst-2024", prev["fikst-2024"]),
+        layout_page("lincoln", "layout-lincoln-electric-work.json", "lincoln", "Lincoln Electric",
+                    "// MACHINE R&D: COMMERCIAL ENGINE DRIVES · SUMMER INTERNSHIP · 2023", None,
+                    ("raynmaker.html", "NEXT: THE RAYNMAKER")),
+        layout_page("raynmaker", "layout-the-raynmaker.json", "raynmaker", "The RaynMaker",
+                    "// REMOTE CONTROL VEHICLE · COMPUTER AIDED DESIGN COURSE · 2022", None,
+                    ("fsae-suspension.html", "BACK TO: FSAE REAR SUSPENSION")),
+    ]
+
+
 def main():
     os.makedirs(os.path.join(ROOT, "projects"), exist_ok=True)
     with open(os.path.join(ROOT, "index.html"), "w") as f:
