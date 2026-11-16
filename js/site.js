@@ -60,11 +60,11 @@
       if (i < spans.length) {
         spans[i].style.visibility = 'visible';
         spans[i].after(caret);
-        i++; setTimeout(step, 80);
+        i++; setTimeout(step, 120);
       } else {
         setTimeout(function () { caret.remove(); }, 1200);
       }
-    }, 290);
+    }, 435);
   }
   var glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#/<>';
   document.querySelectorAll('[data-scramble]').forEach(function (el, k) {
@@ -75,8 +75,64 @@
       el.textContent = final.split('').map(function (c, j) {
         return j < settled || c === ' ' ? c : glyphs[Math.floor(Math.random() * glyphs.length)];
       }).join('');
-      if (frame < total) setTimeout(tick, 58); else el.textContent = final;
-    }, 1230 + k * 230);
+      if (frame < total) setTimeout(tick, 87); else el.textContent = final;
+    }, 1845 + k * 345);
   });
-  setTimeout(function () { root.classList.remove('boot'); }, 5200);
+  setTimeout(function () { root.classList.remove('boot'); }, 7800);
+})();
+
+// Photo viewer: click any project photo to view it large; arrows/keys to flip, Esc to close.
+(function () {
+  var links = Array.prototype.filter.call(document.querySelectorAll('.lfig a, .gallery a'), function (a) {
+    return /\.(jpe?g|png|gif|webp)$/i.test(a.getAttribute('href') || '');
+  });
+  if (!links.length) return;
+  var lb = document.createElement('div');
+  lb.className = 'lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Photo viewer');
+  lb.innerHTML = '<span class="lb-count"></span><button class="lb-close" type="button" aria-label="Close">✕</button>' +
+    '<button class="lb-prev" type="button" aria-label="Previous photo">‹</button><button class="lb-next" type="button" aria-label="Next photo">›</button>' +
+    '<figure><img alt=""><figcaption></figcaption></figure>';
+  document.body.appendChild(lb);
+  var img = lb.querySelector('img'), cap = lb.querySelector('figcaption'), count = lb.querySelector('.lb-count'), idx = 0, last = null;
+  function show(i) {
+    idx = (i + links.length) % links.length;
+    var a = links[idx], fig = a.closest('figure'), fc = fig && fig.querySelector('figcaption'), im = a.querySelector('img');
+    img.src = a.getAttribute('href'); img.alt = im ? im.alt : '';
+    cap.textContent = fc ? fc.textContent : ''; cap.hidden = !cap.textContent;
+    count.textContent = (idx + 1) + ' / ' + links.length;
+  }
+  function open(i) { last = document.activeElement; show(i); lb.classList.add('open'); document.body.classList.add('lb-lock'); lb.querySelector('.lb-close').focus(); }
+  function close() { lb.classList.remove('open'); document.body.classList.remove('lb-lock'); img.src = ''; if (last) last.focus(); }
+  links.forEach(function (a, i) { a.addEventListener('click', function (e) { e.preventDefault(); open(i); }); });
+  lb.querySelector('.lb-close').addEventListener('click', close);
+  lb.querySelector('.lb-prev').addEventListener('click', function () { show(idx - 1); });
+  lb.querySelector('.lb-next').addEventListener('click', function () { show(idx + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(idx - 1);
+    else if (e.key === 'ArrowRight') show(idx + 1);
+  });
+  var x0 = null;
+  lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1)); x0 = null; });
+})();
+
+// CAD-style cursor readout (desktop only): page coordinates in mm, like a CAD status bar.
+(function () {
+  if (!window.matchMedia || !matchMedia('(pointer: fine)').matches) return;
+  var r = document.createElement('div');
+  r.className = 'cad-readout'; r.setAttribute('aria-hidden', 'true');
+  r.innerHTML = '<span><b>X</b> <span class="cx">0.0</span></span><span><b>Y</b> <span class="cy">0.0</span></span><span>mm</span>';
+  document.body.appendChild(r);
+  var cx = r.querySelector('.cx'), cy = r.querySelector('.cy'), pending = false, px = 0, py = 0;
+  var MM = 25.4 / 96;
+  document.addEventListener('mousemove', function (e) {
+    px = e.pageX; py = e.pageY;
+    if (!r.classList.contains('on')) r.classList.add('on');
+    if (pending) return; pending = true;
+    requestAnimationFrame(function () { cx.textContent = (px * MM).toFixed(1); cy.textContent = (py * MM).toFixed(1); pending = false; });
+  });
+  document.addEventListener('mouseleave', function () { r.classList.remove('on'); });
 })();

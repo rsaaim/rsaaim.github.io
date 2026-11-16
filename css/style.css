@@ -304,23 +304,45 @@ a.tb-v:hover { color: var(--accent); }
 @keyframes bootShow { to { visibility: visible; } }
 @keyframes caretBlink { 50% { opacity: 0; } }
 
-html.boot .hero .eyebrow { animation: bootIn 0.58s ease-out both; }
-html.boot .hero h1 { visibility: hidden; animation: bootShow 0.00s 4.35s forwards; }
-html.boot .hero .readout { animation: bootIn 0.43s 1.01s both; }
-html.boot .hero .readout span { animation: bootFade 0.51s ease-out both; }
-html.boot .hero .readout span:nth-child(1) { animation-delay: 1.16s; }
-html.boot .hero .readout span:nth-child(2) { animation-delay: 1.28s; }
-html.boot .hero .readout span:nth-child(3) { animation-delay: 1.39s; }
-html.boot .hero .readout span:nth-child(4) { animation-delay: 1.51s; }
-html.boot .hero .lede { animation: bootFade 0.87s ease-out both; }
-html.boot .hero .lede:nth-of-type(2) { animation-delay: 1.67s; }
-html.boot .hero .lede:nth-of-type(3) { animation-delay: 1.84s; }
-html.boot .hero .lede:nth-of-type(4) { animation-delay: 2.02s; }
-html.boot .hero .lede:nth-of-type(5) { animation-delay: 2.19s; }
-html.boot .bracket-frame::before { animation: bootTL 0.87s 0.36s cubic-bezier(.2,.8,.2,1) both; }
-html.boot .bracket-frame::after { animation: bootTR 0.87s 0.36s cubic-bezier(.2,.8,.2,1) both; }
-html.boot .bracket-frame .br-b::before { animation: bootBL 0.87s 0.36s cubic-bezier(.2,.8,.2,1) both; }
-html.boot .bracket-frame .br-b::after { animation: bootBR 0.87s 0.36s cubic-bezier(.2,.8,.2,1) both; }
-html.boot .bracket-frame img { animation: bootScan 1.30s 0.65s cubic-bezier(.4,0,.2,1) both; }
-html.boot .bracket-frame .img-caption { animation: bootFade 0.58s 1.81s ease-out both; }
+html.boot .hero .eyebrow { animation: bootIn 0.87s ease-out both; }
+html.boot .hero h1 { visibility: hidden; animation: bootShow 0.00s 6.52s forwards; }
+html.boot .hero .readout { animation: bootIn 0.65s 1.52s both; }
+html.boot .hero .readout span { animation: bootFade 0.77s ease-out both; }
+html.boot .hero .readout span:nth-child(1) { animation-delay: 1.74s; }
+html.boot .hero .readout span:nth-child(2) { animation-delay: 1.92s; }
+html.boot .hero .readout span:nth-child(3) { animation-delay: 2.08s; }
+html.boot .hero .readout span:nth-child(4) { animation-delay: 2.27s; }
+html.boot .hero .lede { animation: bootFade 1.30s ease-out both; }
+html.boot .hero .lede:nth-of-type(2) { animation-delay: 2.50s; }
+html.boot .hero .lede:nth-of-type(3) { animation-delay: 2.76s; }
+html.boot .hero .lede:nth-of-type(4) { animation-delay: 3.03s; }
+html.boot .hero .lede:nth-of-type(5) { animation-delay: 3.29s; }
+html.boot .bracket-frame::before { animation: bootTL 1.30s 0.54s cubic-bezier(.2,.8,.2,1) both; }
+html.boot .bracket-frame::after { animation: bootTR 1.30s 0.54s cubic-bezier(.2,.8,.2,1) both; }
+html.boot .bracket-frame .br-b::before { animation: bootBL 1.30s 0.54s cubic-bezier(.2,.8,.2,1) both; }
+html.boot .bracket-frame .br-b::after { animation: bootBR 1.30s 0.54s cubic-bezier(.2,.8,.2,1) both; }
+html.boot .bracket-frame img { animation: bootScan 1.95s 0.98s cubic-bezier(.4,0,.2,1) both; }
+html.boot .bracket-frame .img-caption { animation: bootFade 0.87s 2.71s ease-out both; }
 .type-caret { display: inline-block; width: .5em; height: .8em; margin-left: .06em; background: var(--accent); vertical-align: baseline; animation: caretBlink .7s steps(1) infinite; }
+
+/* ---------- Photo viewer (lightbox) ---------- */
+.lb { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; background: rgba(6, 9, 13, .92); padding: 56px 72px; }
+.lb.open { display: flex; }
+.lb figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 100%; max-height: 100%; }
+.lb img { max-width: min(1400px, 100%); max-height: calc(100vh - 160px); object-fit: contain; border: 1px solid #2C3640; background: #0B0F14; }
+.lb figcaption { font-family: var(--mono); font-size: 13px; color: #E6EBF0; text-align: center; max-width: 900px; }
+.lb .lb-count { position: absolute; top: 18px; left: 24px; font-family: var(--mono); font-size: 12px; color: #9AA6B2; letter-spacing: .1em; }
+.lb button { position: absolute; background: transparent; border: 1px solid #3A4654; color: #E6EBF0; font-family: var(--mono); font-size: 20px; width: 48px; height: 48px; cursor: pointer; }
+.lb button:hover { border-color: #8CB8FF; color: #8CB8FF; }
+.lb .lb-close { top: 12px; right: 16px; }
+.lb .lb-prev { left: 12px; top: 50%; transform: translateY(-50%); }
+.lb .lb-next { right: 12px; top: 50%; transform: translateY(-50%); }
+.lb [hidden] { display: none; }
+body.lb-lock { overflow: hidden; }
+.lfig a, .gallery a { cursor: zoom-in; }
+@media (max-width: 760px) { .lb { padding: 56px 8px; } .lb .lb-prev, .lb .lb-next { top: auto; bottom: 12px; transform: none; } }
+
+/* ---------- CAD-style cursor readout ---------- */
+.cad-readout { position: fixed; right: 16px; bottom: 16px; z-index: 60; display: none; gap: 14px; padding: 8px 12px; font-family: var(--mono); font-size: 12px; color: var(--text); background: var(--header-bg); border: 1px solid var(--line-2); backdrop-filter: blur(6px); pointer-events: none; font-variant-numeric: tabular-nums; }
+.cad-readout b { color: var(--accent); font-weight: 400; }
+@media (pointer: fine) and (min-width: 900px) { .cad-readout.on { display: flex; } }
