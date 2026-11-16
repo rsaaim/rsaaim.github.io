@@ -1,0 +1,667 @@
+[
+ {
+  "slide": 1,
+  "title": "Fikst Summer 2024 Internship Portfolio",
+  "lines": [
+   {
+    "t": "Rayhaan Saaim",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   }
+  ],
+  "pics": []
+ },
+ {
+  "slide": 2,
+  "title": "",
+  "lines": [
+   {
+    "t": "Projects worked on in chronological order",
+    "lvl": 0,
+    "bullet": false,
+    "bold": true
+   },
+   {
+    "t": "Ball Valve Testing",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Bumper Testing",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "10,000 cycle fixture",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Shipping conditions",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Spring Rate/Height Capture",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Data Post Processing",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "O-Ring Testing",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Assisted in CNC Machining for Heat aged O-Ring testing fixture",
+    "lvl": 2,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Through Bolt Assembly",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Initial 3 prototypes - Design Selection",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Design for Injection Molding - Quoting",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Boss Design",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "CNC Wear Pad",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Made Drawings for tape/wear pad",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "HA/PV Nut Removal Tool",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Modularized prototypes, improved upon design through investigation and feedback",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Designed 4 different types to give to technicians",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Bracket",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Recreated sheet metal part in SW 2021 from SW 2022 and STL part files, made to match critical constraints from drawing",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Made Drawing for manufacturing Release",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Ball Valve Fixture",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Designed/fabricated angled mount and Reservoir Plate",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Tested and Data Post Processed",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "MMC Fixture",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Designed fixture/layout for heat age testing transducer attaches",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Blood Heat Exchanger",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Brainstormed system",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Designed testing procedure/fixture, executed test and analyzed data",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   }
+  ],
+  "pics": []
+ },
+ {
+  "slide": 3,
+  "title": "Bumper Compression Testing",
+  "lines": [
+   {
+    "t": "Rubber bumper using in cart as suspension",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   },
+   {
+    "t": "Used Mk10 Strain Gauge to conduct spring rate testing",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Setup and tested different environmental configurations",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "High Temp",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "High Temp  Humidity",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Fresh out of box",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "10,000 cycles [Lifetime]",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Conducted post processing and presented data to clients to determine field viability",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   }
+  ],
+  "pics": [
+   "s03_01.jpg",
+   "s03_02.jpg",
+   "s03_03.jpg"
+  ]
+ },
+ {
+  "slide": 4,
+  "title": "Bumper Compression Testing",
+  "lines": [],
+  "pics": [
+   "s03_03.jpg",
+   "s03_02.jpg",
+   "s04_04.jpg",
+   "s03_01.jpg"
+  ]
+ },
+ {
+  "slide": 5,
+  "title": "Quarter Turn Nut Install/Removal Tools",
+  "lines": [
+   {
+    "t": "Prototyped and designed 2 sets of tools that install and remove a quarter turn nut onto a bulkhead connection",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   },
+   {
+    "t": "Modularized design for rapid prototyping and testing",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Iterated over design based on user testing",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Presented and delivered final set of tools to clients",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   }
+  ],
+  "pics": [
+   "s05_05.jpg",
+   "s05_06.jpg"
+  ]
+ },
+ {
+  "slide": 6,
+  "title": "Blood Reservoir Valve Break Test",
+  "lines": [
+   {
+    "t": "Designed testing rig for blood reservoir and ball valve break and leak testing",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   },
+   {
+    "t": "Used leak sensor and MK 10 strain gauge in conjunction to find force required for critical leak to occur",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Tested several different reservoirs and valves",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Presented finding to clients for their team to analyze viability of ball valves",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   }
+  ],
+  "pics": [
+   "s06_07.jpg",
+   "s06_08.jpg"
+  ]
+ },
+ {
+  "slide": 7,
+  "title": "Blood Reservoir Valve Break Test",
+  "lines": [],
+  "pics": [
+   "s07_09.jpg",
+   "s06_07.jpg",
+   "s06_08.jpg"
+  ]
+ },
+ {
+  "slide": 8,
+  "title": "Through Bolt Assembly",
+  "lines": [
+   {
+    "t": "Prototyped and designed an injection molded wear pad and sealing tape that fits in a through bolting assembly",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   },
+   {
+    "t": "Iterated over design to ensure proper fitment within assembly, taking into account sealing and manufacturability",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Ensured compliance with injection molding and threaded boss constraints",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Communicated with vendors for final product manufacturing",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   }
+  ],
+  "pics": [
+   "s08_10.jpg",
+   "s08_11.jpg"
+  ]
+ },
+ {
+  "slide": 9,
+  "title": "Through Bolt Assembly",
+  "lines": [],
+  "pics": [
+   "s09_12.jpg",
+   "s09_13.jpg",
+   "s08_10.jpg",
+   "s08_11.jpg"
+  ]
+ },
+ {
+  "slide": 10,
+  "title": "Blood Heat Exchanger",
+  "lines": [],
+  "pics": [
+   "s10_14.jpg",
+   "s10_15.jpg",
+   "s10_16.jpg",
+   "s10_17.jpg"
+  ]
+ },
+ {
+  "slide": 11,
+  "title": "Blood Heat Exchanger",
+  "lines": [
+   {
+    "t": "CONTEXT",
+    "lvl": 0,
+    "bullet": false,
+    "bold": true
+   },
+   {
+    "t": "Need to chill blood before it enters peltier device",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   },
+   {
+    "t": "Concept Project",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   },
+   {
+    "t": "REQUIREMENTS",
+    "lvl": 0,
+    "bullet": false,
+    "bold": true
+   },
+   {
+    "t": "1 Liter of blood",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Max time of 10 min",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Room Temp -> close to freezing",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "GOALS",
+    "lvl": 0,
+    "bullet": false,
+    "bold": true
+   },
+   {
+    "t": "Get blood as close to freezing within time constraint",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Minimize leftover blood",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "NOTE",
+    "lvl": 0,
+    "bullet": false,
+    "bold": true
+   },
+   {
+    "t": "No volume constraint given yet",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   },
+   {
+    "t": "Can assume blood hanging on IV stand",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   }
+  ],
+  "pics": [
+   "s10_14.jpg",
+   "s11_18.jpg",
+   "s10_15.jpg"
+  ]
+ },
+ {
+  "slide": 12,
+  "title": "Blood Heat Exchanger",
+  "lines": [
+   {
+    "t": "PREPARATION",
+    "lvl": 0,
+    "bullet": false,
+    "bold": true
+   },
+   {
+    "t": "Pressure Driven Flow",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Higher pressure -> Higher flow rate",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "[PGH] -> Poiseuille flow",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Keep height of room temp blood fixed",
+    "lvl": 1,
+    "bullet": true,
+    "bold": true
+   },
+   {
+    "t": "SETUP",
+    "lvl": 0,
+    "bullet": false,
+    "bold": true
+   },
+   {
+    "t": "Top Beaker - Room temp blood",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Middle Beaker - Ice Bath",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Spool of tubing",
+    "lvl": 1,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Bottom Beaker - Chilled blood",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "All have thermocouples",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Pour 1 liter of room temp water into top beaker",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Every 15 sec: measure top and bottom volumes and all temps",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Efficiency = Room temp - Chilled temp",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   },
+   {
+    "t": "\u2014---------------------",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   },
+   {
+    "t": "Room temp - Ice bath temp",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   }
+  ],
+  "pics": [
+   "s10_14.jpg",
+   "s12_19.jpg",
+   "s10_15.jpg"
+  ]
+ },
+ {
+  "slide": 13,
+  "title": "Blood Heat Exchanger",
+  "lines": [
+   {
+    "t": "VARIABLES",
+    "lvl": 0,
+    "bullet": false,
+    "bold": true
+   },
+   {
+    "t": "Tube Diameter",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Tube Thickness",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Flow Rate (Pinch Valve)",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "Agitation",
+    "lvl": 0,
+    "bullet": true,
+    "bold": false
+   },
+   {
+    "t": "See how each variable compares to control",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   },
+   {
+    "t": "Can superimpose effects",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   },
+   {
+    "t": "Data kept in spreadsheet - can use efficiency to calculate theoretical scenarios (diff temp blood)",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   },
+   {
+    "t": "Presented to upper management for viability review",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   },
+   {
+    "t": "Experimental Data then used to create custom model",
+    "lvl": 0,
+    "bullet": false,
+    "bold": false
+   }
+  ],
+  "pics": [
+   "s10_14.jpg",
+   "s12_19.jpg",
+   "s10_15.jpg"
+  ]
+ }
+]

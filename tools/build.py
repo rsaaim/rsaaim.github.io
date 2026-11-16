@@ -40,6 +40,7 @@ def head(title, desc, base):
     <a href="{base}index.html#experience">EXPERIENCE</a>
     <a href="{base}index.html#projects">PROJECTS</a>
     <a href="{base}index.html#about">ABOUT</a>
+    <a class="btn-fsae" href="{base}formula-sae.html">FORMULA SAE</a>
     <a class="btn-resume" href="{base}resume.pdf">RESUME</a>
     <button class="theme-toggle" type="button" aria-label="Switch to dark mode">DARK</button>
   </nav>
@@ -64,6 +65,10 @@ def img(base, path):
 # ---------------------------------------------------------------- homepage
 def index():
     b = ""
+    home = json.load(open(os.path.join(ROOT, "tools", "content", "home.json")))
+    intro = [x["v"] for x in home if x["t"] == "p"][1:5]
+    intro_html = "\n".join(f'      <p class="lede">{v}</p>' for v in intro)
+    crimson_html = crimson_section(b)
     xp = [
         dict(href="projects/fikst-robotics.html", nda=True, org="FIKST PRODUCT DEVELOPMENT · WILMINGTON, MA",
              dates="SEP 2025 — PRESENT", cur=True, title="Mechanical Engineer I",
@@ -97,8 +102,6 @@ def index():
          "[ INTERNSHIP ] 2023", "Welding Concept Machine", "Lincoln Electric: brushless motor swap, idle logic, portability kit.", ""),
         ("projects/fea.html", "fsae-fea/05_von-mises-stress-mount.jpg", "Von Mises stress plot of the suspension mounting tab",
          "[ STUDENT TEAM ] 2024", "Suspension Mounting FEA", "Parametric MATLAB + Abaqus sweep: 7.3% lighter at a safety factor of 2.", ""),
-        ("projects/crimson-motorsports.html", "formula-sae-team/01_team-at-competition.jpg", "Crimson Motorsports members at an FSAE competition",
-         "[ LEADERSHIP ] 2024–25", "Formula SAE Team", "Founded Harvard's first FSAE team and handed off an elected board.", ""),
         ("projects/ej255.html", "ej255/05_heads-before-after-cleaning.jpg", "EJ255 cylinder heads before and after cleaning",
          "[ PERSONAL ] 2024–25", "EJ255 Engine Rebuild", "Junkyard turbo boxer: teardown, new bearings and rings, lapped valves, honed bores.", ""),
         ("projects/raynmaker.html", "raynmaker/01_robot.jpg", "The RaynMaker remote control robot",
@@ -118,17 +121,19 @@ def index():
 
     body = f"""
   <section class="wrap hero" id="top">
+    <figure class="bracket-frame"><span class="br-b" aria-hidden="true"></span>
+      <a href="https://seas.harvard.edu/news/2025/07/zooming-future" title="Read the Harvard SEAS article">
+        <img src="{img(b, 'site/home/home_01_holding-my-fsae-rear-suspension-capstone.jpg')}" alt="Rayhaan holding his FSAE rear suspension capstone. Links to the Harvard SEAS article.">
+      </a>
+      <figcaption class="img-caption"><span>HOLDING MY FSAE REAR SUSPENSION CAPSTONE</span><span class="acc">READ ARTICLE ↗</span></figcaption>
+    </figure>
     <div class="hero-copy">
       <p class="eyebrow">// MECHANICAL ENGINEERING PORTFOLIO</p>
       <h1>Rayhaan<br>Saaim</h1>
       <div class="readout"><span class="k">ROLE</span><span>MECHANICAL ENGINEER I</span><span class="k">LOCATION</span><span>BOSTON, MA</span></div>
-      <p class="lede">I design production hardware for industrial and warehouse robots at Fikst Product Development. At Harvard I founded the Formula SAE team, built its rear suspension, and led integration on a liquid rocket engine test stand.</p>
+{intro_html}
       <p class="status">OPEN TO EV · AUTO · AERO ROLES — BOSTON / CALIFORNIA</p>
     </div>
-    <figure class="bracket-frame"><span class="br-b" aria-hidden="true"></span>
-      <img src="{img(b, 'hero/01_hero-holding-rear-suspension.jpg')}" alt="Rayhaan holding the FSAE rear suspension he designed and built">
-      <figcaption class="img-caption"><span>IMG_01 // FSAE REAR SUSPENSION</span><span class="acc">2024–25</span></figcaption>
-    </figure>
   </section>
 
   <section class="wrap" aria-labelledby="skills-h"><div class="skills"><h2 id="skills-h">SKILLS</h2>{chips}</div></section>
@@ -144,6 +149,8 @@ def index():
     <div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr))">{cards_html}
     </div>
   </section>
+
+{crimson_html}
 
   <section class="wrap about" id="about">
     <div style="display:flex; flex-direction:column; gap:14px">
@@ -493,23 +500,23 @@ def pages():
                       [("TYPE", "PUSHROD DOUBLE WISHBONE"), ("STATIC CAMBER", "−1.25°"), ("HUB", "7075 AL"), ("UPRIGHT", "6061 AL")],
                       ("fea.html", "NEXT: SUSPENSION MOUNTING FEA")),
         original_page("fea", "fsae-fea", "FSAE Suspension Mounting FEA",
-                      "// CRIMSON MOTORSPORTS FORMULA SAE · FEA COURSE FINAL PROJECT · 2024",
+                      "Crimson Motorsports Formula SAE | FEA Course Final Project | 2024",
                       [("MASS REDUCTION", "7.3%"), ("SAFETY FACTOR", "2.0"), ("ELEMENTS", "~50,000"), ("SWEEP", "25 STEPS")],
                       ("ej255.html", "NEXT: EJ255 ENGINE REBUILD")),
         original_page("ej255", "ej255", "EJ255 Engine Rebuild", "// PERSONAL PROJECT · 2024–25",
                       [("ENGINE", "EJ255 TURBO"), ("DONOR", "'05 OUTBACK XT"), ("BORES", "45° HONE"), ("TARGET", "'07 WRX")],
                       ("crimson-motorsports.html", "NEXT: FORMULA SAE TEAM")),
         original_page("crimson-motorsports", "formula-sae", "Formula SAE",
-                      "// HISTORY · CRIMSON MOTORSPORTS FORMULA SAE · FOUNDED 2024",
+                      "History | Crimson Motorsports Formula SAE | Founded 2024",
                       [("ROLE", "FOUNDER & PRESIDENT"), ("CAPSTONES", "7 SENIORS"), ("STARTED", "SEPT 2024"), ("NOW", "ADVISOR")],
                       ("fikst-robotics.html", "NEXT: FIKST ROBOTICS"), links=seas),
         ("fikst-robotics", keep["fikst-robotics"]),
         ("fikst-2024", keep["fikst-2024"]),
         original_page("lincoln", "lincoln", "Lincoln Electric",
-                      "// MACHINE R&D: COMMERCIAL ENGINE DRIVES · SUMMER INTERNSHIP · 2023", None,
+                      "Machine R&D: Commercial Engine Drives | Summer Internship | 2023", None,
                       ("raynmaker.html", "NEXT: THE RAYNMAKER")),
         original_page("raynmaker", "raynmaker", "The RaynMaker",
-                      "// REMOTE CONTROL VEHICLE · COMPUTER AIDED DESIGN COURSE · 2022", None,
+                      "Remote Control Vehicle | Computer Aided Design Course | 2022", None,
                       ("fsae-suspension.html", "BACK TO: FSAE REAR SUSPENSION")),
     ]
 
@@ -620,7 +627,7 @@ def layout_page(slug, layout_file, key, title, eyebrow, spec_pairs, nxt):
     html = head(f"{title} — Rayhaan Saaim", f"{title}: a project by Rayhaan Saaim, mechanical engineer.", b) + f"""
   <div class="wrap crumb"><a href="../index.html">HOME</a> / <a href="../index.html#projects">PROJECTS</a> / {escape(title.upper())}</div>
   <section class="wrap proj-hero">
-    <p class="eyebrow">{eyebrow}</p>
+    <p class="eyebrow">{escape(eyebrow)}</p>
     <h1>{escape(title)}</h1>
     {specs(spec_pairs) if spec_pairs else ""}
   </section>
@@ -639,28 +646,139 @@ def pages():
     prev = dict(_old_pages2())
     return [
         layout_page("fsae-suspension", "layout-fsae-rear-suspension.json", "fsae-rear-suspension", "FSAE Rear Suspension",
-                    "// SENIOR CAPSTONE · CRIMSON MOTORSPORTS FORMULA SAE · 2024–2025",
+                    "Senior Capstone | Crimson Motorsports Formula SAE | 2024–2025",
                     [("TYPE", "PUSHROD DOUBLE WISHBONE"), ("STATIC CAMBER", "−1.25°"), ("HUB", "7075 AL"), ("UPRIGHT", "6061 AL")],
                     ("fea.html", "NEXT: SUSPENSION MOUNTING FEA")),
         layout_page("fea", "layout-fsae-suspension-mounting-fea.json", "fsae-fea", "FSAE Suspension Mounting FEA",
-                    "// CRIMSON MOTORSPORTS FORMULA SAE · FEA COURSE FINAL PROJECT · 2024",
+                    "Crimson Motorsports Formula SAE | FEA Course Final Project | 2024",
                     [("MASS REDUCTION", "7.3%"), ("SAFETY FACTOR", "2.0"), ("ELEMENTS", "~50,000"), ("SWEEP", "25 STEPS")],
                     ("ej255.html", "NEXT: EJ255 ENGINE REBUILD")),
-        layout_page("ej255", "layout-ej255-engine-rebuild.json", "ej255", "EJ255 Engine Rebuild", "// PERSONAL PROJECT · 2024-25",
+        layout_page("ej255", "layout-ej255-engine-rebuild.json", "ej255", "EJ255 Engine Rebuild", "Personal Project | 2024-25",
                     [("ENGINE", "EJ255 TURBO"), ("DONOR", "'05 OUTBACK XT"), ("BORES", "45° HONE"), ("TARGET", "'07 WRX")],
                     ("crimson-motorsports.html", "NEXT: FORMULA SAE")),
         layout_page("crimson-motorsports", "layout-formula-sae.json", "formula-sae", "Formula SAE",
-                    "// HISTORY · CRIMSON MOTORSPORTS FORMULA SAE · FOUNDED 2024", None,
+                    "History | Crimson Motorsports Formula SAE | Founded 2024", None,
                     ("fikst-robotics.html", "NEXT: FIKST ROBOTICS")),
         ("fikst-robotics", prev["fikst-robotics"]),
         ("fikst-2024", prev["fikst-2024"]),
         layout_page("lincoln", "layout-lincoln-electric-work.json", "lincoln", "Lincoln Electric",
-                    "// MACHINE R&D: COMMERCIAL ENGINE DRIVES · SUMMER INTERNSHIP · 2023", None,
+                    "Machine R&D: Commercial Engine Drives | Summer Internship | 2023", None,
                     ("raynmaker.html", "NEXT: THE RAYNMAKER")),
         layout_page("raynmaker", "layout-the-raynmaker.json", "raynmaker", "The RaynMaker",
-                    "// REMOTE CONTROL VEHICLE · COMPUTER AIDED DESIGN COURSE · 2022", None,
+                    "Remote Control Vehicle | Computer Aided Design Course | 2022", None,
                     ("fsae-suspension.html", "BACK TO: FSAE REAR SUSPENSION")),
     ]
+
+
+def crimson_section(b):
+    """Homepage section mirroring the original 'Crimson Motorsports FSAE - Founded 2024' block."""
+    seas = "https://seas.harvard.edu/news/2025/07/zooming-future"
+    hn = img_names("home")
+    im = lambda n: f"{b}assets/img/site/home/{hn[n]}"
+    fig = lambda n, href=None: f'<figure class="lfig"><a href="{href or "formula-sae.html"}"><img src="{im(n)}" alt="Crimson Motorsports FSAE" loading="lazy"></a></figure>'
+    return f"""  <section class="wrap section layout" id="crimson">
+    <div class="section-head"><span class="num">03</span><h2 style="margin:0"><a href="formula-sae.html" style="color:inherit;text-decoration:none">Crimson Motorsports FSAE</a> - Founded 2024</h2><span class="rule" aria-hidden="true"></span></div>
+    <div class="lrow"><div class="lcol" style="grid-column:1 / span 6">{fig(2, seas)}</div><div class="lcol" style="grid-column:7 / span 6">{fig(3)}{fig(4)}</div></div>
+    <div class="lrow"><div class="lcol" style="grid-column:1 / span 6">{fig(5)}</div><div class="lcol" style="grid-column:7 / span 6">{fig(6)}</div></div>
+    <div class="lrow"><div class="lcol" style="grid-column:1 / span 6">{fig(7)}</div><div class="lcol" style="grid-column:7 / span 6">{fig(8)}</div></div>
+    <p class="meta" style="justify-content:flex-start"><a href="formula-sae.html">READ THE FULL TEAM HISTORY &gt;&gt;</a></p>
+  </section>"""
+
+
+def fikst_slides_page(b="../"):
+    slides = json.load(open(os.path.join(ROOT, "tools", "content", "fikst-slides.json")))[1:]  # skip title slide
+    groups = []
+    for sl in slides:
+        title = sl["title"]
+        if not title and sl["lines"] and sl["lines"][0]["bold"]:
+            title = sl["lines"][0]["t"]; sl = dict(sl, lines=sl["lines"][1:])
+        if groups and groups[-1]["title"] == title:
+            groups[-1]["lines"] += sl["lines"]
+            groups[-1]["pics"] += [p for p in sl["pics"] if p not in groups[-1]["pics"]]
+        else:
+            groups.append({"title": title, "lines": list(sl["lines"]), "pics": list(dict.fromkeys(sl["pics"]))})
+    body = []
+    for g in groups:
+        parts, lst = [], []
+
+        def flush():
+            if not lst:
+                return
+            html, depth = "", 0
+            for lvl, v in lst:
+                if lvl > depth:
+                    html += "<ul>" * (lvl - depth)
+                else:
+                    html += "</li>"
+                    while depth > lvl:
+                        html += "</ul></li>"; depth -= 1
+                depth = lvl
+                html += f"<li>{v}"
+            html += "</li>"
+            while depth > 1:
+                html += "</ul></li>"; depth -= 1
+            parts.append(html + "</ul>"); lst.clear()
+
+        for ln in g["lines"]:
+            t = escape(ln["t"])
+            if ln["bullet"]:
+                lst.append((ln["lvl"] + 1, f"<strong>{t}</strong>" if ln["bold"] else t))
+            else:
+                flush()
+                parts.append(f"<h3>{t}</h3>" if ln["bold"] and t.isupper() else (f"<p><strong>{t}</strong></p>" if ln["bold"] else f"<p>{t}</p>"))
+        flush()
+        figs = "".join(f'<figure class="lfig"><a href="{b}assets/img/fikst-2024/slide-media/{p}"><img src="{b}assets/img/fikst-2024/slide-media/{p}" alt="{escape(g["title"])}" loading="lazy"></a></figure>' for p in g["pics"])
+        pics = f'<div class="pic-grid">{figs}</div>' if figs else ""
+        head_html = f"<h2>{escape(g['title'])}</h2>"
+        if parts and pics:
+            row = f'<div class="lrow"><div class="lcol" style="grid-column:1 / span 6">{head_html}{"".join(parts)}</div><div class="lcol" style="grid-column:7 / span 6">{pics}</div></div>'
+        else:
+            row = f'<div class="lrow"><div class="lcol" style="grid-column:1 / span 12">{head_html}{"".join(parts)}{pics}</div></div>'
+        body.append(row)
+    nxt = '<div class="next-proj"><a href="../index.html#projects">&lt;&lt; ALL PROJECTS</a><a href="lincoln.html">NEXT: LINCOLN ELECTRIC &gt;&gt;</a></div>'
+    html = head("Fikst Product Development — Rayhaan Saaim", "Fikst Summer 2024 Internship Portfolio: biomedical device design and testing.", b) + f"""
+  <div class="wrap crumb"><a href="../index.html">HOME</a> / <a href="../index.html#projects">PROJECTS</a> / FIKST PRODUCT DEVELOPMENT</div>
+  <section class="wrap proj-hero">
+    <p class="eyebrow">Summer Internship | 2024</p>
+    <h1>Fikst Product Development</h1>
+  </section>
+  <article class="wrap layout" style="padding-bottom:24px">
+{chr(10).join(body)}
+    {nxt}
+  </article>
+"""
+    return "fikst-2024", html + foot(b)
+
+
+_old_pages3 = pages
+
+
+def pages():
+    prev = dict(_old_pages3())
+    ej = layout_page("ej255", "layout-ej255-engine-rebuild.json", "ej255", "EJ255 Engine Rebuild", "Personal Project | 2024-25",
+                     [("ENGINE", "EJ255 TURBO"), ("DONOR", "SUBARU OUTBACK 2.5 XT"), ("YEAR", "2005")],
+                     ("fikst-robotics.html", "NEXT: FIKST ROBOTICS"))
+    out = []
+    for slug, html in _old_pages3():
+        if slug == "crimson-motorsports":
+            continue
+        if slug == "ej255":
+            html = ej[1]
+        if slug == "fikst-2024":
+            html = fikst_slides_page()[1]
+        out.append((slug, html))
+    return out
+
+
+def formula_sae_top():
+    """Formula SAE as its own top-level tab (formula-sae.html)."""
+    slug, html = layout_page("formula-sae", "layout-formula-sae.json", "formula-sae", "Formula SAE",
+                             "History | Crimson Motorsports Formula SAE | Founded 2024", None,
+                             ("index.html#crimson", "BACK TO HOME"))
+    html = html.replace('href="../', 'href="').replace('src="../', 'src="')
+    html = html.replace('<a href="index.html#projects">PROJECTS</a> / FORMULA SAE', 'FORMULA SAE')
+    html = html.replace('&lt;&lt; ALL PROJECTS', '&lt;&lt; HOME')
+    return html
 
 
 def main():
@@ -670,6 +788,11 @@ def main():
     for slug, html in pages():
         with open(os.path.join(ROOT, "projects", slug + ".html"), "w") as f:
             f.write(html)
+    with open(os.path.join(ROOT, "formula-sae.html"), "w") as f:
+        f.write(formula_sae_top())
+    stale = os.path.join(ROOT, "projects", "crimson-motorsports.html")
+    if os.path.exists(stale):
+        os.remove(stale)
     print("built index + projects")
 
 

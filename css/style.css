@@ -247,3 +247,8 @@ a:hover { color: var(--accent-hover); }
   .layout .lrow { grid-template-columns: 1fr; gap: 12px; }
   .layout .lcol { grid-column: 1 / -1 !important; }
 }
+.nav .btn-fsae { border: 1px solid var(--accent); color: var(--accent); }
+.nav .btn-fsae:hover { background: var(--accent); color: var(--on-accent); }
+.pic-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: start; }
+.hero .lede { margin: 0; }
+.hero-copy { gap: 16px; }
