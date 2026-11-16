@@ -124,7 +124,7 @@
   if (!window.matchMedia || !matchMedia('(pointer: fine)').matches) return;
   var r = document.createElement('div');
   r.className = 'cad-readout'; r.setAttribute('aria-hidden', 'true');
-  r.innerHTML = '<span><b>X</b> <span class="cx">0.0</span></span><span><b>Y</b> <span class="cy">0.0</span></span><span>mm</span>';
+  r.innerHTML = '<span><b>X</b> <span class="cx">0.0</span></span><span><b>Y</b> <span class="cy">0.0</span></span>';
   document.body.appendChild(r);
   var cx = r.querySelector('.cx'), cy = r.querySelector('.cy'), pending = false, px = 0, py = 0;
   var MM = 25.4 / 96;
