@@ -88,16 +88,28 @@ def index():
 
     cards = [
         ("projects/fsae-suspension.html", "fsae-suspension/02_suspension-on-test-rig.jpg", "Rear suspension mounted on the camber test rig",
-         "[ STUDENT TEAM ] 2024–25", "FSAE Rear Suspension", "−1.25° static camber, never positive through travel. Hub and upright machined in-house.", ""),
+         "[ STUDENT TEAM ] 2024–25", "FSAE Rear Suspension", "Senior capstone: pushrod double wishbone, machined hub and upright, rig-validated camber.", ""),
+        ("projects/fikst-robotics.html", None, "",
+         "[ INDUSTRY ] 2025–NOW", "Robotics Production Parts", "Fikst: silicone ingress seal, drop-in harness tray, chassis changes.", ""),
+        ("projects/fikst-2024.html", "fikst-2024/01_through-bolt-wear-pad-cad.jpg", "CAD of the injection-molded wear pad",
+         "[ INTERNSHIP ] 2024", "Biomedical Device Engineering", "Fikst: molded wear pad, quarter-turn tool sets, test rigs, heat exchanger.", ' class="contain"'),
+        ("projects/lincoln.html", "lincoln/01_rayhaan-at-lincoln.jpg", "Rayhaan at Lincoln Electric",
+         "[ INTERNSHIP ] 2023", "Welding Concept Machine", "Lincoln Electric: brushless motor swap, idle logic, portability kit.", ""),
         ("projects/fea.html", "fsae-fea/05_von-mises-stress-mount.jpg", "Von Mises stress plot of the suspension mounting tab",
-         "[ STUDENT TEAM ] 2024", "Mount FEA Optimization", "25-step parametric sweep in MATLAB + Abaqus. 7.3% lighter at a safety factor of 2.", ""),
+         "[ STUDENT TEAM ] 2024", "Suspension Mounting FEA", "Parametric MATLAB + Abaqus sweep: 7.3% lighter at a safety factor of 2.", ""),
+        ("projects/crimson-motorsports.html", "formula-sae-team/01_team-at-competition.jpg", "Crimson Motorsports members at an FSAE competition",
+         "[ LEADERSHIP ] 2024–25", "Formula SAE Team", "Founded Harvard's first FSAE team and handed off an elected board.", ""),
         ("projects/ej255.html", "ej255/05_heads-before-after-cleaning.jpg", "EJ255 cylinder heads before and after cleaning",
          "[ PERSONAL ] 2024–25", "EJ255 Engine Rebuild", "Junkyard turbo boxer: teardown, new bearings and rings, lapped valves, honed bores.", ""),
-        ("projects/crimson-motorsports.html", "formula-sae-team/01_team-at-competition.jpg", "Crimson Motorsports members at an FSAE competition",
-         "[ LEADERSHIP ] 2024–25", "Founding Crimson Motorsports", "Started Harvard's first FSAE team from zero members and handed off an elected board.", ""),
+        ("projects/raynmaker.html", "raynmaker/01_robot.jpg", "The RaynMaker remote control robot",
+         "[ COURSE PROJECT ] 2022", "The RaynMaker", "ES51 competition robot: plow and servo scoop, screwdriver-sourced gearbox.", ""),
     ]
+    def card_media(i, a, c):
+        if i is None:
+            return ('<div class="card-nda"><span class="tag">[ UNDER NDA ]</span><span>CLIENT DETAILS WITHHELD</span></div>')
+        return f'<img src="{img(b, i)}" alt="{a}" loading="lazy"{c}>'
     cards_html = "".join(f"""
-      <a class="card reveal" href="{h}"><img src="{img(b, i)}" alt="{a}" loading="lazy"{c}>
+      <a class="card reveal" href="{h}">{card_media(i, a, c)}
         <div class="card-body"><span class="tag-line">{t}</span><h3>{n}</h3><p>{d}</p></div></a>""" for h, i, a, t, n, d, c in cards)
 
     skills = ["SOLIDWORKS", "GD&amp;T Y14.5", "TOLERANCE STACKS", "BOLTED JOINTS", "MOLDING / CASTING DFM",
@@ -131,7 +143,6 @@ def index():
     <div class="section-head"><span class="num">02</span><h2>Projects</h2><span class="rule" aria-hidden="true"></span></div>
     <div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr))">{cards_html}
     </div>
-    <p class="meta" style="margin-top:20px; justify-content:flex-start; gap:24px"><span>ALSO:</span><a href="projects/raynmaker.html">THE RAYNMAKER ROBOT (2022) &gt;&gt;</a></p>
   </section>
 
   <section class="wrap about" id="about">
