@@ -121,12 +121,6 @@ def index():
 
     body = f"""
   <section class="wrap hero" id="top">
-    <figure class="bracket-frame"><span class="br-b" aria-hidden="true"></span>
-      <a href="https://seas.harvard.edu/news/2025/07/zooming-future" title="Read the Harvard SEAS article">
-        <img src="{img(b, 'site/home/home_01_holding-my-fsae-rear-suspension-capstone.jpg')}" alt="Rayhaan holding his FSAE rear suspension capstone. Links to the Harvard SEAS article.">
-      </a>
-      <figcaption class="img-caption"><span>HOLDING MY FSAE REAR SUSPENSION CAPSTONE</span><span class="acc">READ ARTICLE ↗</span></figcaption>
-    </figure>
     <div class="hero-copy">
       <p class="eyebrow">// MECHANICAL ENGINEERING PORTFOLIO</p>
       <h1>Rayhaan<br>Saaim</h1>
@@ -134,6 +128,12 @@ def index():
 {intro_html}
       <p class="status">OPEN TO EV · AUTO · AERO ROLES — BOSTON / CALIFORNIA</p>
     </div>
+    <figure class="bracket-frame"><span class="br-b" aria-hidden="true"></span>
+      <a href="https://seas.harvard.edu/news/2025/07/zooming-future" title="Read the Harvard SEAS article">
+        <img src="{img(b, 'site/home/home_01_holding-my-fsae-rear-suspension-capstone.jpg')}" alt="Rayhaan holding his FSAE rear suspension capstone. Links to the Harvard SEAS article.">
+      </a>
+      <figcaption class="img-caption"><span>HOLDING MY FSAE REAR SUSPENSION CAPSTONE</span><span class="acc">READ ARTICLE ↗</span></figcaption>
+    </figure>
   </section>
 
   <section class="wrap" aria-labelledby="skills-h"><div class="skills"><h2 id="skills-h">SKILLS</h2>{chips}</div></section>
