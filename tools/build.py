@@ -136,7 +136,7 @@ def index():
       <a href="https://seas.harvard.edu/news/2025/07/zooming-future" title="Read the Harvard SEAS article">
         <img src="{img(b, 'site/home/home_01_holding-my-fsae-rear-suspension-capstone.jpg')}" alt="Rayhaan holding his FSAE rear suspension capstone. Links to the Harvard SEAS article.">
       </a>
-      <figcaption class="img-caption"><span>HOLDING MY FSAE REAR SUSPENSION CAPSTONE</span><span class="acc">READ ARTICLE ↗</span></figcaption>
+      <figcaption class="img-caption"><span>HOLDING MY FSAE REAR SUSPENSION CAPSTONE</span><a class="acc" href="https://seas.harvard.edu/news/2025/07/zooming-future">READ ARTICLE ↗</a></figcaption>
     </figure>
   </section>
 

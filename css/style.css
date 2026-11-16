@@ -262,3 +262,5 @@ a:hover { color: var(--accent-hover); }
 #contact .contact-box { display: inline-flex; width: auto; max-width: 100%; }
 .xp:hover { transform: none; background: var(--line-2); }
 .xp-body { justify-content: center; }
+.img-caption a.acc { text-decoration: none; }
+.img-caption a.acc:hover { text-decoration: underline; color: #FFFFFF; }
