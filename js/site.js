@@ -62,7 +62,7 @@
         spans[i].after(caret);
         i++; setTimeout(step, 120);
       } else {
-        setTimeout(function () { caret.remove(); }, 1200);
+        setTimeout(function () { caret.remove(); }, 1900);
       }
     }, 435);
   }
