@@ -136,3 +136,26 @@
   });
   document.addEventListener('mouseleave', function () { r.classList.remove('on'); });
 })();
+
+// Boot-up: intro paragraphs descramble into place (left to right), staggered like the readout.
+(function () {
+  if (!document.documentElement.classList.contains('boot')) return;
+  var pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#/<>';
+  var rnd = function () { return pool[Math.floor(Math.random() * pool.length)]; };
+  var starts = [2500, 2760, 3030, 3290], dur = 1200, step = 45;
+  document.querySelectorAll('.hero .lede').forEach(function (el, k) {
+    var final = el.textContent, chars = final.split('');
+    el.setAttribute('aria-label', final);
+    var scrambled = function (settled) {
+      return chars.map(function (c, j) { return j < settled || c === ' ' ? c : rnd(); }).join('');
+    };
+    el.textContent = scrambled(0);
+    var t0 = null;
+    setTimeout(function tick() {
+      if (t0 === null) t0 = Date.now();
+      var p = Math.min(1, (Date.now() - t0) / dur);
+      el.textContent = p >= 1 ? final : scrambled(Math.floor(chars.length * p));
+      if (p < 1) setTimeout(tick, step);
+    }, starts[k] !== undefined ? starts[k] : 3290 + (k - 3) * 260);
+  });
+})();
