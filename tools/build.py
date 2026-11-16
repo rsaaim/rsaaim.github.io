@@ -99,7 +99,7 @@ def index():
         ("projects/fikst-2024.html", "site/home/home_10_biomedical-device-engineering.jpg", "Biomedical device engineering at Fikst",
          "[ INTERNSHIP ] 2024", "Biomedical Device Engineering", "Fikst: molded wear pad, quarter-turn tool sets, test rigs, heat exchanger.", ""),
         ("projects/lincoln.html", "thumbs/welding.jpg", "Rayhaan at Lincoln Electric",
-         "[ INTERNSHIP ] 2023", "Welding Concept Machine", "Lincoln Electric: brushless motor swap, idle logic, portability kit.", ""),
+         "[ INTERNSHIP ] 2023", "Welding Concept Machine", "Lincoln Electric: brushless motor swap, idle logic, portability kit.", ' style="object-position:center top"'),
         ("projects/fea.html", "thumbs/fea.jpg", "Von Mises stress plot of the suspension mounting tab",
          "[ STUDENT TEAM ] 2024", "Suspension Mounting FEA", "Parametric MATLAB + Abaqus sweep: 7.3% lighter at a safety factor of 2.", ""),
         ("projects/ej255.html", "thumbs/ej255.jpg", "Assembled EJ255 short block and heads",
