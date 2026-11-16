@@ -252,3 +252,10 @@ a:hover { color: var(--accent-hover); }
 .pic-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: start; }
 .hero .lede { margin: 0; }
 .hero-copy { gap: 16px; }
+.skills { flex-direction: column; align-items: stretch; gap: 12px; }
+.skill-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.skill-cat { font-family: var(--display); font-weight: 700; font-size: 16px; letter-spacing: .1em; text-transform: uppercase; min-width: 130px; color: var(--text); }
+.xp-logo { display: flex; align-items: center; justify-content: center; min-height: 220px; padding: 24px; }
+.xp-inner > .xp-logo img { width: 100%; height: auto; max-height: 180px; object-fit: contain; }
+.card img.logo-fit { object-fit: contain; background: #FFFFFF; padding: 30px; }
+@media (max-width: 760px) { .xp-logo { min-height: 160px; } }

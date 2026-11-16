@@ -39,8 +39,7 @@ def head(title, desc, base):
   <nav class="nav" aria-label="Main">
     <a href="{base}index.html#experience">EXPERIENCE</a>
     <a href="{base}index.html#projects">PROJECTS</a>
-    <a href="{base}index.html#about">ABOUT</a>
-    <a class="btn-fsae" href="{base}formula-sae.html">FORMULA SAE</a>
+        <a href="{base}formula-sae.html">FORMULA SAE</a>
     <a class="btn-resume" href="{base}resume.pdf">RESUME</a>
     <button class="theme-toggle" type="button" aria-label="Switch to dark mode">DARK</button>
   </nav>
@@ -51,7 +50,7 @@ def head(title, desc, base):
 
 def foot(base):
     return f"""</main>
-<footer class="site-footer"><span>© 2026 RAYHAAN SAAIM</span><span>BUILT IN SOMERVILLE, MA</span></footer>
+<footer class="site-footer"><span>© 2026 RAYHAAN SAAIM</span></footer>
 <script src="{base}js/site.js"></script>
 </body>
 </html>
@@ -71,13 +70,13 @@ def index():
     intro_html = "\n".join(f'      <p class="lede">{v}</p>' for v in intro)
     crimson_html = crimson_section(b)
     xp = [
-        dict(href="projects/fikst-robotics.html", nda=True, org="FIKST PRODUCT DEVELOPMENT · WILMINGTON, MA",
+        dict(href="projects/fikst-robotics.html", img="logos/fikst.jpg", alt="Fikst Product Development logo", logo="#FFFFFF", org="FIKST PRODUCT DEVELOPMENT · WILMINGTON, MA",
              dates="SEP 2025 — PRESENT", cur=True, title="Mechanical Engineer I",
              text="Production parts for an industrial and warehouse robotics client: a molded silicone ingress seal, a drop-in nylon harness tray, and chassis changes backed by bolted-joint and tolerance-stack analysis."),
         dict(href="projects/fikst-2024.html", img="fikst-2024/06_bumper-compression-test.jpg", alt="Rubber bumper compression test on a Mark-10 force stand",
              org="FIKST PRODUCT DEVELOPMENT · WILMINGTON, MA", dates="JUN — AUG 2024", title="Mechanical Engineering Intern",
              text="Medical device work: an injection-molded wear pad, quarter-turn nut tool sets, bumper and valve test rigs, and a blood heat-exchanger study for upper management."),
-        dict(href="projects/lincoln.html", img="lincoln/01_rayhaan-at-lincoln.jpg", alt="Rayhaan at Lincoln Electric",
+        dict(href="projects/lincoln.html", img="logos/lincoln.jpg", alt="Lincoln Electric logo", logo="#BD2B2D",
              org="LINCOLN ELECTRIC · CLEVELAND, OH", dates="JUN — AUG 2023", title="Engineering Intern · Machine R&amp;D",
              text="Built a welding concept machine from two engine-drive platforms: brushless motor swap, idle-control logic and wiring, and a portability kit. Presented to upper management."),
     ]
@@ -85,7 +84,8 @@ def index():
     for x in xp:
         left = ('<div class="xp-nda"><span class="tag">[ UNDER NDA ]</span><span class="bar" style="width:80%"></span>'
                 '<span class="bar" style="width:60%"></span><span>CLIENT DETAILS WITHHELD</span></div>') if x.get("nda") \
-            else f'<img src="{img(b, x["img"])}" alt="{x["alt"]}" loading="lazy">'
+            else (f'<div class="xp-logo" style="background:{x["logo"]}"><img src="{img(b, x["img"])}" alt="{x["alt"]}" loading="lazy"></div>' if x.get("logo")
+                  else f'<img src="{img(b, x["img"])}" alt="{x["alt"]}" loading="lazy">')
         dates = f'<span class="acc">{x["dates"]}</span>' if x.get("cur") else f'<span>{x["dates"]}</span>'
         xp_html += f"""
       <a class="xp chamfer reveal" href="{x['href']}"><div class="xp-inner chamfer">{left}
@@ -93,19 +93,19 @@ def index():
           <h3>{x['title']}</h3><p>{x['text']}</p><span class="more">READ MORE &gt;&gt;</span></div></div></a>"""
 
     cards = [
-        ("projects/fsae-suspension.html", "fsae-suspension/02_suspension-on-test-rig.jpg", "Rear suspension mounted on the camber test rig",
+        ("projects/fsae-suspension.html", "site/home/home_09_fsae-rear-suspension.jpg", "FSAE rear suspension assembly",
          "[ STUDENT TEAM ] 2024–25", "FSAE Rear Suspension", "Senior capstone: pushrod double wishbone, machined hub and upright, rig-validated camber.", ""),
-        ("projects/fikst-robotics.html", None, "",
-         "[ INDUSTRY ] 2025–NOW", "Robotics Production Parts", "Fikst: silicone ingress seal, drop-in harness tray, chassis changes.", ""),
-        ("projects/fikst-2024.html", "fikst-2024/01_through-bolt-wear-pad-cad.jpg", "CAD of the injection-molded wear pad",
-         "[ INTERNSHIP ] 2024", "Biomedical Device Engineering", "Fikst: molded wear pad, quarter-turn tool sets, test rigs, heat exchanger.", ' class="contain"'),
-        ("projects/lincoln.html", "lincoln/01_rayhaan-at-lincoln.jpg", "Rayhaan at Lincoln Electric",
+        ("projects/fikst-robotics.html", "logos/fikst.jpg", "Fikst Product Development logo",
+         "[ INDUSTRY ] 2025–NOW", "Robotics Production Parts", "Fikst: silicone ingress seal, drop-in harness tray, chassis changes.", ' class="logo-fit"'),
+        ("projects/fikst-2024.html", "site/home/home_10_biomedical-device-engineering.jpg", "Biomedical device engineering at Fikst",
+         "[ INTERNSHIP ] 2024", "Biomedical Device Engineering", "Fikst: molded wear pad, quarter-turn tool sets, test rigs, heat exchanger.", ""),
+        ("projects/lincoln.html", "site/home/home_11_welding-concept-machine.jpg", "Rayhaan at Lincoln Electric",
          "[ INTERNSHIP ] 2023", "Welding Concept Machine", "Lincoln Electric: brushless motor swap, idle logic, portability kit.", ""),
-        ("projects/fea.html", "fsae-fea/05_von-mises-stress-mount.jpg", "Von Mises stress plot of the suspension mounting tab",
+        ("projects/fea.html", "thumbs/fea.jpg", "Von Mises stress plot of the suspension mounting tab",
          "[ STUDENT TEAM ] 2024", "Suspension Mounting FEA", "Parametric MATLAB + Abaqus sweep: 7.3% lighter at a safety factor of 2.", ""),
-        ("projects/ej255.html", "ej255/05_heads-before-after-cleaning.jpg", "EJ255 cylinder heads before and after cleaning",
+        ("projects/ej255.html", "thumbs/ej255.jpg", "Assembled EJ255 short block and heads",
          "[ PERSONAL ] 2024–25", "EJ255 Engine Rebuild", "Junkyard turbo boxer: teardown, new bearings and rings, lapped valves, honed bores.", ""),
-        ("projects/raynmaker.html", "raynmaker/01_robot.jpg", "The RaynMaker remote control robot",
+        ("projects/raynmaker.html", "thumbs/raynmaker.jpg", "The RaynMaker remote control robot",
          "[ COURSE PROJECT ] 2022", "The RaynMaker", "ES51 competition robot: plow and servo scoop, screwdriver-sourced gearbox.", ""),
     ]
     def card_media(i, a, c):
@@ -116,9 +116,15 @@ def index():
       <a class="card reveal" href="{h}">{card_media(i, a, c)}
         <div class="card-body"><span class="tag-line">{t}</span><h3>{n}</h3><p>{d}</p></div></a>""" for h, i, a, t, n, d, c in cards)
 
-    skills = ["SOLIDWORKS", "GD&amp;T Y14.5", "TOLERANCE STACKS", "BOLTED JOINTS", "MOLDING / CASTING DFM",
-              "ABAQUS FEA", "MATLAB", "CNC / LATHE / MILL", "TIG WELDING"]
-    chips = "".join(f'<span class="chip">{s}</span>' for s in skills)
+    skills = [
+        ("Software", "Solidworks, HSM Works, Abaqus, Comsol, Autodesk Fusion 360"),
+        ("Fabrication", "TIG &amp; MIG Welding, CNC &amp; Manual Mill, 3D Printing, CNC &amp; Manual Lathe, Laser Cutting, Soldering"),
+        ("Programming", "Matlab, C, PHP/MySQL, Python, HTML/CSS, Flask"),
+    ]
+    chips = "".join(
+        f'<div class="skill-row"><span class="skill-cat">{cat}:</span>'
+        + "".join(f'<span class="chip">{x.strip()}</span>' for x in items.split(", ")) + "</div>"
+        for cat, items in skills)
 
     body = f"""
   <section class="wrap hero" id="top">
@@ -127,7 +133,6 @@ def index():
       <h1>Rayhaan<br>Saaim</h1>
       <div class="readout"><span class="k">ROLE</span><span>MECHANICAL ENGINEER I</span><span class="k">LOCATION</span><span>BOSTON, MA</span></div>
 {intro_html}
-      <p class="status">OPEN TO EV · AUTO · AERO ROLES — BOSTON / CALIFORNIA</p>
     </div>
     <figure class="bracket-frame"><span class="br-b" aria-hidden="true"></span>
       <a href="https://seas.harvard.edu/news/2025/07/zooming-future" title="Read the Harvard SEAS article">
@@ -153,12 +158,8 @@ def index():
 
 {crimson_html}
 
-  <section class="wrap about" id="about">
-    <div style="display:flex; flex-direction:column; gap:14px">
-      <div class="section-head" style="margin:0"><span class="num">03</span><h2>About</h2></div>
-      <p>Harvard BS Mechanical Engineering, 2025. Integration lead for a 500 lbf LOX/ethanol rocket engine test stand with the Harvard Rocket Propulsion Group. I like the whole loop: CAD, analysis, machining or welding the part myself, then testing it.</p>
-    </div>
-    <div class="contact-box" id="contact">
+  <section class="wrap section" id="contact">
+    <div class="contact-box">
       <span class="h">&gt; CONTACT</span>
       <a href="mailto:{EMAIL}">EMAIL ........ {EMAIL}</a>
       <a href="{LINKEDIN}">LINKEDIN ..... /in/rayhaansaaim</a>
