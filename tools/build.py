@@ -786,7 +786,7 @@ HIDDEN_PAGES = {"fikst-robotics"}  # on hold: Rayhaan will add content later
 def new_tab_external(html):
     """Open the SEAS 'Zooming into the future' article links in a new tab."""
     import re as _re
-    return _re.sub(r'(<a href="https?://seas\.harvard\.edu[^"]*")(?![^>]*target=)', r'\1 target="_blank" rel="noopener"', html)
+    return _re.sub(r'(<a [^>]*href="https?://seas\.harvard\.edu[^"]*")(?![^>]*target=)', r'\1 target="_blank" rel="noopener"', html)
 
 
 def main():
