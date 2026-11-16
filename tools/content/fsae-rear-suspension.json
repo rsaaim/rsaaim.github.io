@@ -1,0 +1,424 @@
+[
+ {
+  "t": "h1",
+  "lvl": 0,
+  "v": "FSAE Rear Suspension"
+ },
+ {
+  "t": "h1",
+  "lvl": 0,
+  "v": "<a href=\"#h.jdi8tabyevcf\"></a>Senior Capstone | Crimson Motorsports Formula SAE | 2024–2025"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "I led the design, fabrication, and testing of the rear suspension system for our first competition vehicle. This project served as my mechanical engineering senior capstone, which focused on developing a high performance, regulation compliant rear suspension setup optimized for handling, durability and cost."
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_01.jpg"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_02.jpg"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_03_project-context.jpg"
+ },
+ {
+  "t": "h2",
+  "lvl": 0,
+  "v": "<a href=\"#h.2lwj1rlxg39z\"></a>Project Context"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Harvard had no prior Formula SAE presence. Recognizing the difficulty in garnering student involvement with no prior groundwork, the senior capstone project was identified as the igniter to starting up an FSAE team. Working alongside six other senior engineering students, I took charge of the rear suspension subsystem while others worked on the chassis, steering, powertrain, and aerodynamic package. Our goal was to create the infrastructure for a competition ready vehicle for Harvard's FSAE team in order to participate in FSAE's Internal Combustion Engine Division."
+ },
+ {
+  "t": "h2",
+  "lvl": 0,
+  "v": "<a href=\"#h.3j8kthyahls6\"></a>Suspension Type"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "After evaluating common suspension types (MacPherson strut, direct double wishbone, pullrod, pushrod), I selected a double wishbone pushrod configuration. This architecture allowed for:"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Inboard mounting of springs and dampers for better aerodynamics and protection"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Greater adjustability via rocker arms"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Simplified packaging above the drivetrain"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_04_geometry-design.jpg"
+ },
+ {
+  "t": "h2",
+  "lvl": 0,
+  "v": "<a href=\"#h.m30e5wx2by1\"></a>Geometry Design"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "The suspension was designed around the Goodyear D2704 20.0x7.0-13 tire. Vehicle handling and tire grip is largely determined by camber angle, which is the angle between the vertical axis of the wheel and the vertical axis of the vehicle, when viewed from the front. I used a combination of CAD modeling and 4-bar linkage Matlab analysis to optimize camber behavior during bump, rebound, and body roll. Key geometry decisions included:"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Achieving a static camber of -1.25° for peak grip"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Ensuring camber angle did not become positive at any point in wheel travel, as tire grip significantly decreases past that point"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Selecting wheel halves and offsets to minimize scrub radius"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Optimizing camber gain with respect to control arm mounting points and rear bulkhead geometry via Matlab"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "The determination of the control arm mounting points and rear bulkhead geometry was nontrivial. As the system design was an ever changing process, with part compatibility and packaging being an uphill battle, the 4-bar linkage and subsequent camber gain would change. Thus, the camber gain would have to be retested and compared against my technical specification until the system design was completed. Collaboration with the chassis engineer was necessary as the final rear bulkhead geometry needed to be locked in for structural feasibility and torsional stiffness FEA testing."
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_05_solidworks-sketch-rear-suspension-geometry-4-bar-l.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "SolidWorks Sketch: Rear Suspension Geometry 4-Bar Linkage Representation"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_06_finalized-chassis.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Finalized Chassis Rear Bulkhead"
+ },
+ {
+  "t": "h2",
+  "lvl": 0,
+  "v": "<a href=\"#h.ou8jppbud14v\"></a>System Design &amp; Machining"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "The rear suspension system contains several key components and subcomponents that were designed and fabricated as part of this thesis. This includes the following:"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "<strong>Wheel Hub</strong> - The wheel hub must attach to the wheel face concentrically, hold the brake rotor, secure the inner ring of the ball bearings as well as house the mount for the differential"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "<strong>Upright </strong>- The upright mounts the wheel hub, holds the brake caliper, secures the outer ring of the ball bearings, while also mounting both wishbones and the toe link"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "<strong>Upper and Lower Wishbones</strong> - Suspension linkages that connect the chassis to the upright"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "<strong>Pushrod</strong> - Suspension linkage that connects the lower wishbone to the rocker/damper subassembly"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "<strong>Toe Link </strong>- Keeps the wheel at a fixed angle when looking at the vehicle from above"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_07_diagram-of-full-rear-suspension-3d-model.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Diagram of Full Rear Suspension 3D Model"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_08_wheel-hub.jpg"
+ },
+ {
+  "t": "h1",
+  "lvl": 0,
+  "v": "<a href=\"#h.hf4pash03sjq\"></a>Wheel Hub"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "The wheel hub must allow rotation within the upright. Therefore, two ball bearings are utilized with the wheel hub securing the inner race and the upright securing the outer race. Thus, a stack configuration was designed with additional pieces pressing the bearings to the wheel hub."
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Machined out of 7075 aluminum using manual lathe and manual mill, both with some programmed features"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_09_wheel-hub-assembly-cross-section-diagram.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Wheel Hub Assembly Cross Section Diagram"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_10_wheel-hub-assembly-exploded-view.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Wheel Hub Assembly Exploded View"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "The hub must also secure the brake rotor and drivetrain axle, which uses a tripod mount. The wheel hub cap serves a second purpose to hold the tripod mount inside the wheel hub."
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_11_wheel-hub-brake-diagram.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Wheel Hub Brake Diagram"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_12_wheel-hub-brake-sub-assembly.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Wheel Hub Brake Sub Assembly"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_13_rcv-tripod-mount-for-cv-axles.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "RCV Tripod Mount for CV Axles"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_14.jpg"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_15_upright.jpg"
+ },
+ {
+  "t": "h1",
+  "lvl": 0,
+  "v": "<a href=\"#h.qafwp5ygbtdg\"></a>Upright"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "The upright must secure the wheel hub, this is through the aforementioned two ball bearings. An interference fit combined with a lip is designed to hold the outer race of both bearings."
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "The necessary mounts are designed to hold the brake calipers, control arms, pushrod and toe link in place."
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Machined out of 6061 aluminum. The initial outline was waterjet cut and the rest was machined on the manual mill."
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_16_upright-ball-bearing-cross-section.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Upright/Ball Bearing Cross Section"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_17_upright-mounting-diagram.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Upright Mounting Diagram"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_18_control-arms.jpg"
+ },
+ {
+  "t": "h2",
+  "lvl": 0,
+  "v": "<a href=\"#h.jzai01s7hhi\"></a>Control Arms"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_19_linkages.jpg"
+ },
+ {
+  "t": "h2",
+  "lvl": 0,
+  "v": "<a href=\"#h.bki5dklug5rq\"></a>Linkages"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_20.jpg"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_21.jpg"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_22_threaded-rod-end-inserts-and-bearing-cups-were-mac.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Threaded rod end inserts and bearing cups were machined on the manual lathe."
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "The steel tubing was notched and then fixtured in place in order to prevent them from warping while being TIG welded to the different end components."
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_23_braking-subassembly.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Braking Subassembly"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_24_braking-alignment-diagram.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Braking Alignment Diagram"
+ },
+ {
+  "t": "h1",
+  "lvl": 0,
+  "v": "<a href=\"#h.yahm6nro6w7\"></a>Braking Compatibility"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Ensure braking system could be easily adopted by the FSAE team"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "RCV Floating Rotor Kit"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Wilwood Brake Caliper - PS1 120-5453"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "All mounts built into my upright/wheel hub design. A waterjet cut mount would connect the caliper to the upright."
+ },
+ {
+  "t": "h2",
+  "lvl": 0,
+  "v": "<a href=\"#h.e038s2siveqp\"></a>Testing"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "A representative testing rig was created in order to more easily and accurately get camber measurements of the suspension in the varying dynamic configurations. Mounts were designed on this rig to directly mimic the spatial configuration of which the control arms will attach to the chassis."
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_25_rear-suspension-mounted-to-chassis.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Rear Suspension Mounted to Chassis"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_26_rear-suspension-mounted-to-testing-rig.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Rear Suspension Mounted to Testing Rig"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_27_chassis-roll-dynamic-camber-measurement.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Chassis Roll Dynamic Camber Measurement"
+ },
+ {
+  "t": "img",
+  "v": "fsae-rear-suspension_28_wheel-alignment-measurement.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Wheel Alignment Measurement"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Home"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Resume"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Projects"
+ }
+]

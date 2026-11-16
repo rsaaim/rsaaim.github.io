@@ -1,0 +1,125 @@
+[
+ {
+  "t": "img",
+  "v": "lincoln_01_lincoln-electric.jpg"
+ },
+ {
+  "t": "h1",
+  "lvl": 0,
+  "v": "Lincoln Electric"
+ },
+ {
+  "t": "h1",
+  "lvl": 0,
+  "v": "<a href=\"#h.v70bp6hvkn1d\"></a>Machine R&amp;D: Commercial Engine Drives | Summer Internship | 2023"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "This tab may look a tad interesting in the sense that you may notice a lack of pictures and perhaps some cryptic wording. As part of the NDA, identifying details of the project had to be omitted. Nonetheless, I can share the engineering aspects involved with the project"
+ },
+ {
+  "t": "h1",
+  "lvl": 0,
+  "v": "<a href=\"#h.m21r8hnvtxre\"></a>Welding Concept Machine"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "This was the main project I was involved with this internship. The concept was to create a new welding machine from two of Lincoln's existing models. One of these models is a smaller, more barebones setup while the other is commercial sized and has extensive capabilities. My task was to start with the larger machine and convert it to a machine with the same power but simpler utility using electronics from the smaller machine."
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Motor swapped to a slightly smaller brushless one"
+ },
+ {
+  "t": "li",
+  "lvl": 2,
+  "v": "Cheaper and requires less maintenance compared to brush motor"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "PCB Board swapped with one from smaller machine"
+ },
+ {
+  "t": "li",
+  "lvl": 2,
+  "v": "Needed to see how to integrate/adapt engine &amp; motor wiring to work with new PCB board"
+ },
+ {
+  "t": "li",
+  "lvl": 2,
+  "v": "Created logic diagram to determine wiring for various engine components to run at appropriate times for a 5 position switch:"
+ },
+ {
+  "t": "li",
+  "lvl": 3,
+  "v": "Starter"
+ },
+ {
+  "t": "li",
+  "lvl": 3,
+  "v": "Low Idle"
+ },
+ {
+  "t": "li",
+  "lvl": 3,
+  "v": "High Idle"
+ },
+ {
+  "t": "li",
+  "lvl": 3,
+  "v": "Auto Idle"
+ },
+ {
+  "t": "li",
+  "lvl": 3,
+  "v": "Off"
+ },
+ {
+  "t": "li",
+  "lvl": 2,
+  "v": "Spliced wires, installed relays and tested machine"
+ },
+ {
+  "t": "li",
+  "lvl": 2,
+  "v": "Utilized toroid for auto idle capabilities and completed testing"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Designed and fabricated a portability kit prototype using already manufactured in house parts"
+ },
+ {
+  "t": "img",
+  "v": "lincoln_02_standing-near-the-1915-stable-arc-welder.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Standing Near the 1915 \"Stable-Arc\" Welder"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "This concept project was presented to upper management for review as well as during the Lincoln Electric Intern Showcase. Other small projects were also completed during this internship regarding the design of current products."
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Home"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Resume"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Projects"
+ }
+]

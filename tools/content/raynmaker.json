@@ -1,0 +1,119 @@
+[
+ {
+  "t": "h1",
+  "lvl": 0,
+  "v": "The RaynMaker"
+ },
+ {
+  "t": "h1",
+  "lvl": 0,
+  "v": "<a href=\"#h.dk629tg8hxma\"></a> Remote Control Vehicle | Computer Aided Design Course | 2022"
+ },
+ {
+  "t": "img",
+  "v": "raynmaker_01.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "In this class, I learned CAD software (SOLIDWORKS) and various manufacturing processes in order to research, design and fabricate a remote control robot to compete in a class wide competition. The goal of the competition was to design and manufacture robots capable of maneuvering in an arena and scoring points by moving dog toys into respective nets. The robots had to fit within size constraints, use various manufacturing techniques, and demonstrate reliability and maneuverability. Our team prioritized simplicity, reliability, and mobility over other factors due to time, material, and experience constraints. We opted for a \"plow\" design, featuring a low center of gravity, rear-driven wheels, and a scooping mechanism controlled by a servo motor."
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Manufacturing involved multiple techniques such as laser cutting, milling, 3D printing, and silicon molding. The robot was designed with a focus on stability, torque calculation for ramp traversal, and wheel optimization for traction and smooth movement. Maneuverability was enhanced by using caster wheels and a low frame, allowing for quick turns and precise navigation."
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "During testing and competition seeding, our robot performed well, scoring points efficiently with its scooping mechanism and superior mobility. Despite initial seeding yielding five points, the team believed further practice could significantly improve scores. The robot's reliability and maneuverability proved advantageous, and while storage was omitted for mobility reasons, future improvements could enhance efficiency and gem collection methods. Overall, our robot successfully met competition criteria, demonstrating effective design and manufacturing execution."
+ },
+ {
+  "t": "img",
+  "v": "raynmaker_02_turfwar-competition-field.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Turfwar Competition Field"
+ },
+ {
+  "t": "img",
+  "v": "raynmaker_03_gearbox-made-from-electric-screwdriver.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Gearbox Made From Electric Screwdriver"
+ },
+ {
+  "t": "img",
+  "v": "raynmaker_04_finalized-cad-model.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Finalized CAD Model"
+ },
+ {
+  "t": "img",
+  "v": "raynmaker_05_top-view.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Top View"
+ },
+ {
+  "t": "img",
+  "v": "raynmaker_06_front-view.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Front View"
+ },
+ {
+  "t": "img",
+  "v": "raynmaker_07_side-view.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Side View"
+ },
+ {
+  "t": "img",
+  "v": "raynmaker_08_bottom-view.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Bottom View"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Group Project with Jack Shea and Emma-Kate Price"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "I did not come up with the project name, but I swear it was a unanimous vote"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Home"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Resume"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Projects"
+ }
+]

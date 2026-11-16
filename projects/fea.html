@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Suspension Mount FEA Optimization — Rayhaan Saaim</title>
-<meta name="description" content="I extended a from-scratch MATLAB finite element solver into a parametric tool that finds how thin the suspension mounting tabs can be before they yield, then cut 7.3% of their mass.">
-<meta property="og:title" content="Suspension Mount FEA Optimization — Rayhaan Saaim">
-<meta property="og:description" content="I extended a from-scratch MATLAB finite element solver into a parametric tool that finds how thin the suspension mounting tabs can be before they yield, then cut 7.3% of their mass.">
+<title>FSAE Suspension Mounting FEA — Rayhaan Saaim</title>
+<meta name="description" content="This was a final project for the FEA course at Harvard: ES128 - Computational Solid and Structural Mechanics. In this course, an FEA program is built from scrat">
+<meta property="og:title" content="FSAE Suspension Mounting FEA — Rayhaan Saaim">
+<meta property="og:description" content="This was a final project for the FEA course at Harvard: ES128 - Computational Solid and Structural Mechanics. In this course, an FEA program is built from scrat">
 <meta property="og:image" content="https://rsaaim.github.io/assets/img/hero/01_hero-holding-rear-suspension.jpg">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
@@ -29,29 +29,46 @@
 </header>
 <main id="main">
 
-  <div class="wrap crumb"><a href="../index.html">HOME</a> / <a href="../index.html#projects">PROJECTS</a> / SUSPENSION MOUNT FEA OPTIMIZATION</div>
+  <div class="wrap crumb"><a href="../index.html">HOME</a> / <a href="../index.html#projects">PROJECTS</a> / FSAE SUSPENSION MOUNTING FEA</div>
   <section class="wrap proj-hero">
-    <p class="eyebrow">// HARVARD ES128 · CRIMSON MOTORSPORTS · 2024</p>
-    <h1>Suspension Mount FEA Optimization</h1>
-    <p class="lede">I extended a from-scratch MATLAB finite element solver into a parametric tool that finds how thin the suspension mounting tabs can be before they yield, then cut 7.3% of their mass.</p>
+    <p class="eyebrow">// CRIMSON MOTORSPORTS FORMULA SAE · FEA COURSE FINAL PROJECT · 2024</p>
+    <h1>FSAE Suspension Mounting FEA</h1>
+    <p class="lede">This was a final project for the FEA course at Harvard: ES128 - Computational Solid and Structural Mechanics. In this course, an FEA program is built from scratch in Matlab, which reads Abaqus CAE input files, classifies the model and element analysis type, performs the appropriate FEA calculations to each individual element and outputs the results.</p>
     <div class="specs"><div><p class="k">MASS REDUCTION</p><p class="v">7.3%</p></div><div><p class="k">SAFETY FACTOR</p><p class="v">2.0</p></div><div><p class="k">ELEMENTS</p><p class="v">~50,000</p></div><div><p class="k">SWEEP</p><p class="v">25 STEPS</p></div></div>
   </section>
   <article class="wrap" style="padding-bottom:24px">
-<div class="prose">
-    <h2>The problem</h2>
-    <p>The control arms attach to the chassis through ball joints bolted between pairs of welded steel tabs. The tabs have to survive race loads, but every gram on a student car counts. The question: how thin can they go while staying below yield with a safety factor of 2?</p>
-    <h2>The tool</h2>
-    <p>In ES128 (Computational Solid and Structural Mechanics) we built an FEA program in MATLAB that reads Abaqus input files, classifies the element types and solves each element. I built on it so the program takes a range of tab thicknesses and a step count, rebuilds and re-constrains the model for each thickness, solves it, and plots peak stress against thickness.</p>
+    <div class="prose original">
+<p>For my final project, I built onto this code to make a program that performs a parameterized FEA analysis on key suspension mounting brackets and connection points for the Crimson Motorsports Formula SAE vehicle to reduce vehicle weight whilst ensuring strength.</p>
+<div class="gallery"><figure><a href="../assets/img/site/fsae-fea/fsae-fea_01.jpg"><img src="../assets/img/site/fsae-fea/fsae-fea_01.jpg" alt="FSAE Suspension Mounting FEA" loading="lazy" class="contain"></a></figure><figure><a href="../assets/img/site/fsae-fea/fsae-fea_02_fsae-rear-suspension-assembly.jpg"><img src="../assets/img/site/fsae-fea/fsae-fea_02_fsae-rear-suspension-assembly.jpg" alt="FSAE Rear Suspension Assembly" loading="lazy" class="contain"></a><figcaption>FSAE Rear Suspension Assembly</figcaption></figure><figure><a href="../assets/img/site/fsae-fea/fsae-fea_03_rear-suspension-mounted-to-chassis.jpg"><img src="../assets/img/site/fsae-fea/fsae-fea_03_rear-suspension-mounted-to-chassis.jpg" alt="Rear Suspension Mounted to Chassis" loading="lazy" class="contain"></a><figcaption>Rear Suspension Mounted to Chassis</figcaption></figure></div>
+<p>The suspension mounts to the chassis via the control arms. These control arms have ball joints at the ends.</p>
+<ul><li>On the chassis, two mounting brackets or "tabs" are TIG welded onto the frame</li><li>These tabs have a hole in them for a bolt to go through</li><li>This bolt goes through the ball joint on the control arms and are secured in place with a nut on the end</li></ul>
+<div class="gallery wide"><figure><a href="../assets/img/site/fsae-fea/fsae-fea_04_suspension-mounting-assembly-diagram.jpg"><img src="../assets/img/site/fsae-fea/fsae-fea_04_suspension-mounting-assembly-diagram.jpg" alt="Suspension Mounting Assembly Diagram" loading="lazy" class="contain"></a><figcaption>Suspension Mounting Assembly Diagram</figcaption></figure></div>
+<p>The suspension must remain properly mounted to the FSAE vehicle under racing conditions. This project aimed to see how thin the mounting brackets could be, without reaching the yield stress point (With a safety factor of 2). This program:</p>
+<ul><li>Takes in a range of mounting bracket thicknesses as well as the number of increments to test</li><li>Performs the FEA on the model for each thickness</li><li>The model is altered, rebuilt and fixtured appropriately each time</li><li>The maximum stress in each test is extracted and plotted against the varying tab thicknesses</li></ul>
+<p>Full assembly model in Abaqus built including:</p>
+<ul><li>Section of chassis tube</li><li>Left and right mounting tabs</li><li>Bolt and nut</li></ul>
+<p>Positioned all parts in 3D space to match real-world orientation</p>
+<p>Merged components into a single part to avoid contact errors and simplify interaction definitions</p>
+<div class="gallery"><figure><a href="../assets/img/site/fsae-fea/fsae-fea_05.jpg"><img src="../assets/img/site/fsae-fea/fsae-fea_05.jpg" alt="FSAE Suspension Mounting FEA" loading="lazy" class="contain"></a></figure><figure><a href="../assets/img/site/fsae-fea/fsae-fea_06_merged-part.jpg"><img src="../assets/img/site/fsae-fea/fsae-fea_06_merged-part.jpg" alt="Merged Part" loading="lazy" class="contain"></a><figcaption>Merged Part</figcaption></figure><figure><a href="../assets/img/site/fsae-fea/fsae-fea_07_meshed-part-with-tetrahedral-elements.jpg"><img src="../assets/img/site/fsae-fea/fsae-fea_07_meshed-part-with-tetrahedral-elements.jpg" alt="Meshed Part with Tetrahedral Elements" loading="lazy" class="contain"></a><figcaption>Meshed Part with Tetrahedral Elements</figcaption></figure></div>
+<p>Assigned material properties:</p>
+<ul><li>AISI 304 Stainless Steel</li><li>Young’s Modulus: 190 GPa</li><li>Yield Strength: 215 MPa</li></ul>
+<p>Meshed geometry using second-order tetrahedral elements (C3D10) with a seed size of 0.001 (approx. 50,000 elements)</p>
+<p>Applied boundary conditions:</p>
+<ul><li>Fully fixed the ends of the chassis tube</li><li>Load applied under the bolt to simulate upward pull from suspension arm</li></ul>
+<p>Calculated loading:</p>
+<ul><li>340 kg car × 3g bump load = 10,006 N total</li><li>Load divided by 16 mounts → 625 N per mount</li></ul>
+<div class="gallery wide"><figure><a href="../assets/img/site/fsae-fea/fsae-fea_08_constrained-part-with-loading-on-bolt.jpg"><img src="../assets/img/site/fsae-fea/fsae-fea_08_constrained-part-with-loading-on-bolt.jpg" alt="Constrained Part with Loading on Bolt" loading="lazy" class="contain"></a><figcaption>Constrained Part with Loading on Bolt</figcaption></figure></div>
+<p>Ran baseline simulation at 3.175 mm tab thickness</p>
+<ul><li>Observed ~100 MPa at tab-chassis connection</li><li>Verified model behavior (bolt folding inward, tab deflection upward)</li></ul>
+<p>Scripted a parametric sweep of tab thickness:</p>
+<ul><li>Range: 3.175 mm → 0.5 mm (25 increments)</li><li>Automated model rebuild, simulation, and von Mises stress extraction</li></ul>
+<p>Analyzed results:</p>
+<ul><li>Max stress rose significantly below 2.5 mm</li><li>Optimum thickness found at 2.5 mm with stress ≈ 106 MPa</li><li>Achieved 7.3% reduction in mount weight</li></ul>
+<div class="gallery"><figure><a href="../assets/img/site/fsae-fea/fsae-fea_09_baseline-tab-thickness-3-175mm-model-stress-distri.jpg"><img src="../assets/img/site/fsae-fea/fsae-fea_09_baseline-tab-thickness-3-175mm-model-stress-distri.jpg" alt="Baseline Tab Thickness [3.175mm] Model - Stress Distribution Deformation Scale Factor = 850" loading="lazy" class="contain"></a><figcaption>Baseline Tab Thickness [3.175mm] Model - Stress Distribution Deformation Scale Factor = 850</figcaption></figure><figure><a href="../assets/img/site/fsae-fea/fsae-fea_10.jpg"><img src="../assets/img/site/fsae-fea/fsae-fea_10.jpg" alt="FSAE Suspension Mounting FEA" loading="lazy" class="contain"></a></figure><figure><a href="../assets/img/site/fsae-fea/fsae-fea_11_optimized-tab-thickness-2-5mm-model-stress-distrib.jpg"><img src="../assets/img/site/fsae-fea/fsae-fea_11_optimized-tab-thickness-2-5mm-model-stress-distrib.jpg" alt="Optimized Tab Thickness [2.5mm] Model - Stress Distribution Deformation Scale Factor = 850" loading="lazy" class="contain"></a><figcaption>Optimized Tab Thickness [2.5mm] Model - Stress Distribution Deformation Scale Factor = 850</figcaption></figure></div>
+<p>While this weight reduction is negligible within the realm of Student Formula Competition, this project can be applied to critical applications within the realm of engineering for optimizing between strength and weight/cost.</p>
     </div>
-    <div class="gallery"><figure><a href="../assets/img/fsae-fea/01_real-suspension-mount.jpg"><img src="../assets/img/fsae-fea/01_real-suspension-mount.jpg" alt="The real mounting tabs on a car" loading="lazy"></a><figcaption>The real mounting tabs on a car</figcaption></figure><figure><a href="../assets/img/fsae-fea/02_abaqus-model.jpg"><img src="../assets/img/fsae-fea/02_abaqus-model.jpg" alt="Tube, tabs, bolt and nut merged into one part" loading="lazy"></a><figcaption>Tube, tabs, bolt and nut merged into one part</figcaption></figure><figure><a href="../assets/img/fsae-fea/03_tet-mesh.jpg"><img src="../assets/img/fsae-fea/03_tet-mesh.jpg" alt="Second-order tetrahedral mesh" loading="lazy"></a><figcaption>Second-order tetrahedral mesh</figcaption></figure><figure><a href="../assets/img/fsae-fea/04_boundary-conditions-load.jpg"><img src="../assets/img/fsae-fea/04_boundary-conditions-load.jpg" alt="Fixed tube ends, load under the bolt" loading="lazy"></a><figcaption>Fixed tube ends, load under the bolt</figcaption></figure></div>
-    <div class="prose">
-    <h2>Model</h2>
-    <ul><li>Geometry: chassis tube section, left and right tabs, bolt and nut, merged into one part to avoid contact errors</li><li>Material: AISI 304 stainless (E = 190 GPa, yield 215 MPa)</li><li>Mesh: C3D10 second-order tets, about 50,000 elements</li><li>Load: 340 kg car × 3 g bump = 10,006 N, split over 16 mounts = 625 N per mount</li></ul>
-    <h2>Result</h2>
-    <p>The 3.175 mm baseline peaked around 100 MPa at the tab-to-tube joint. Sweeping from 3.175 mm down to 0.5 mm in 25 steps showed stress climbing sharply below 2.5 mm. At <strong>2.5 mm</strong> the peak was about 106 MPa, inside the safety factor of 2, for a <strong>7.3% lighter mount</strong>. Small on one car, but the same tool applies anywhere strength trades against weight or cost.</p>
-    </div>
-    <div class="gallery"><figure><a href="../assets/img/fsae-fea/05_von-mises-stress-mount.jpg"><img src="../assets/img/fsae-fea/05_von-mises-stress-mount.jpg" alt="Von Mises stress on the mount model" loading="lazy"></a><figcaption>Von Mises stress on the mount model</figcaption></figure><figure><a href="../assets/img/fsae-fea/06_thin-tab-stress-past-yield.jpg"><img src="../assets/img/fsae-fea/06_thin-tab-stress-past-yield.jpg" alt="Thin-tab case: stress climbs well past yield" loading="lazy"></a><figcaption>Thin-tab case: stress climbs well past yield</figcaption></figure><figure><a href="../assets/img/fsae-fea/07_max-stress-vs-thickness-plot.jpg"><img src="../assets/img/fsae-fea/07_max-stress-vs-thickness-plot.jpg" alt="Peak stress vs. tab thickness" loading="lazy" class="contain"></a><figcaption>Peak stress vs. tab thickness</figcaption></figure></div>
-    <div class="next-proj"><a href="../index.html#projects">&lt;&lt; ALL PROJECTS</a><a href="ej255.html">NEXT: EJ255 REBUILD &gt;&gt;</a></div>
+
+    <div class="next-proj"><a href="../index.html#projects">&lt;&lt; ALL PROJECTS</a><a href="ej255.html">NEXT: EJ255 ENGINE REBUILD &gt;&gt;</a></div>
   </article>
 </main>
 <footer class="site-footer"><span>© 2026 RAYHAAN SAAIM</span><span>BUILT IN SOMERVILLE, MA</span></footer>

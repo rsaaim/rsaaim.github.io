@@ -195,6 +195,118 @@ def project(slug, title, eyebrow, lede, spec_pairs, body, nxt):
     return slug, html + foot(b)
 
 
+import json, re
+CONTENT = os.path.join(ROOT, "tools", "content")
+MONTH_HEAD = re.compile(r" - (January|February|March|April|May|June|July|August|September|October|November|December) ?\d")
+ROSTER = re.compile(r"^[A-Z][A-Za-z /&;]+ - .+'\d\d$")
+
+
+def strip_tags(h):
+    return re.sub(r"<[^>]+>", "", h)
+
+
+def render_original(key, base, title, links=None):
+    """Turn the blocks pulled from the old Google Site into HTML, keeping the author's text."""
+    links = links or {}
+    b = json.load(open(os.path.join(CONTENT, key + ".json")))
+    # drop page title/subtitle h1s and the trailing site nav
+    while b and (b[0]["t"] == "h1" or (b[0]["t"] == "img" and len(b) > 1 and b[1]["t"] == "h1")):
+        b = b[1:]
+    while b and strip_tags(b[-1]["v"]) in ("Home", "Resume", "Projects"):
+        b = b[:-1]
+    out, gallery, lst = [], [], []
+    lede = None
+
+    def flush_gallery():
+        nonlocal gallery
+        if not gallery:
+            return
+        cls = "gallery wide" if len(gallery) <= 2 else "gallery"
+        figs = ""
+        for name, cap in gallery:
+            src = f"{base}assets/img/site/{key}/{name}"
+            href = links.get(name, src)
+            alt = escape(strip_tags(cap)) if cap else escape(title)
+            figs += (f'<figure><a href="{href}"><img src="{src}" alt="{alt}" loading="lazy" class="contain"></a>'
+                     + (f"<figcaption>{cap}</figcaption>" if cap else "") + "</figure>")
+        out.append(f'<div class="{cls}">{figs}</div>')
+        gallery = []
+
+    def flush_list():
+        nonlocal lst
+        if not lst:
+            return
+        html, depth = "", 0
+        for lvl, v in lst:
+            lvl = max(lvl, 1)
+            if lvl > depth:
+                html += "<ul>" * (lvl - depth)
+            else:
+                html += "</li>"
+                while depth > lvl:
+                    html += "</ul></li>"; depth -= 1
+            depth = lvl
+            html += f"<li>{v}"
+        html += "</li>"
+        while depth > 1:
+            html += "</ul></li>"; depth -= 1
+        html += "</ul>"
+        out.append(html)
+        lst = []
+
+    i = 0
+    while i < len(b):
+        x = b[i]; t = x["t"]; v = x["v"]; txt = strip_tags(v)
+        if t == "img":
+            cap = ""
+            if i + 1 < len(b) and b[i + 1]["t"] == "p" and len(strip_tags(b[i + 1]["v"])) <= 100 \
+                    and not MONTH_HEAD.search(strip_tags(b[i + 1]["v"])) and strip_tags(b[i + 1]["v"]) != "Acknowledgements":
+                cap = b[i + 1]["v"]; i += 1
+                while i + 1 < len(b) and b[i + 1]["t"] == "p" and (cap.rstrip().endswith("-") or strip_tags(b[i + 1]["v"]).startswith("Deformation")):
+                    cap = cap.rstrip() + " " + b[i + 1]["v"]; i += 1
+            flush_list(); gallery.append((v, cap)); i += 1; continue
+        flush_gallery()
+        if t == "li":
+            lst.append((x.get("lvl", 1), v)); i += 1; continue
+        flush_list()
+        if t == "p" and ROSTER.match(txt):
+            lst.append((1, v)); i += 1; continue
+        if t == "h2" or (t == "p" and (MONTH_HEAD.search(txt) or txt == "Acknowledgements")):
+            out.append(f"<h2>{v}</h2>")
+        elif t in ("h1", "h3"):
+            out.append(f"<h3>{v}</h3>")
+        elif lede is None and t == "p" and len(txt) > 120:
+            lede = v
+        else:
+            out.append(f"<p>{v}</p>")
+        i += 1
+    flush_gallery(); flush_list()
+    return lede, "\n".join(out)
+
+
+def original_page(slug, key, title, eyebrow, spec_pairs, nxt, links=None, extra=""):
+    b = "../"
+    lede, body = render_original(key, b, title, links)
+    nxt_html = f'<div class="next-proj"><a href="../index.html#projects">&lt;&lt; ALL PROJECTS</a><a href="{nxt[0]}">{nxt[1]} &gt;&gt;</a></div>'
+    html = head(f"{title} — Rayhaan Saaim", strip_tags(lede or title)[:160], b) + f"""
+  <div class="wrap crumb"><a href="../index.html">HOME</a> / <a href="../index.html#projects">PROJECTS</a> / {escape(title.upper())}</div>
+  <section class="wrap proj-hero">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{escape(title)}</h1>
+    <p class="lede">{lede or ""}</p>
+    {specs(spec_pairs) if spec_pairs else ""}
+  </section>
+  <article class="wrap" style="padding-bottom:24px">
+    <div class="prose original">
+{body}
+    </div>
+{extra}
+    {nxt_html}
+  </article>
+"""
+    return slug, html + foot(b)
+
+
 def pages():
     out = []
 
@@ -360,6 +472,46 @@ def pages():
     {gallery(b, [("raynmaker/01_robot.jpg", "The RaynMaker")])}""",
         ("fsae-suspension.html", "BACK TO: FSAE SUSPENSION")))
     return out
+
+
+_old_pages = pages
+
+
+def pages():
+    keep = {slug: html for slug, html in _old_pages() if slug in ("fikst-robotics", "fikst-2024")}
+    slides = "".join(
+        f'<figure><a href="../assets/img/fikst-2024/slides/slide-{n:02d}.jpg"><img src="../assets/img/fikst-2024/slides/slide-{n:02d}.jpg" alt="Fikst 2024 portfolio slide {n}" loading="lazy" class="contain"></a></figure>'
+        for n in range(1, 14))
+    keep["fikst-2024"] = keep["fikst-2024"].replace(
+        '<div class="next-proj">',
+        '<div class="prose"><h2>Portfolio slides</h2><p>The full slide deck from my internship, approved for my portfolio.</p></div>'
+        f'<div class="gallery wide">{slides}</div><div class="next-proj">', 1)
+    seas = {"formula-sae_01_click-on-the-above-picture-to-read-the-article.jpg": "https://seas.harvard.edu/news/2025/07/zooming-future"}
+    return [
+        original_page("fsae-suspension", "fsae-rear-suspension", "FSAE Rear Suspension",
+                      "// SENIOR CAPSTONE · CRIMSON MOTORSPORTS FORMULA SAE · 2024–25",
+                      [("TYPE", "PUSHROD DOUBLE WISHBONE"), ("STATIC CAMBER", "−1.25°"), ("HUB", "7075 AL"), ("UPRIGHT", "6061 AL")],
+                      ("fea.html", "NEXT: SUSPENSION MOUNTING FEA")),
+        original_page("fea", "fsae-fea", "FSAE Suspension Mounting FEA",
+                      "// CRIMSON MOTORSPORTS FORMULA SAE · FEA COURSE FINAL PROJECT · 2024",
+                      [("MASS REDUCTION", "7.3%"), ("SAFETY FACTOR", "2.0"), ("ELEMENTS", "~50,000"), ("SWEEP", "25 STEPS")],
+                      ("ej255.html", "NEXT: EJ255 ENGINE REBUILD")),
+        original_page("ej255", "ej255", "EJ255 Engine Rebuild", "// PERSONAL PROJECT · 2024–25",
+                      [("ENGINE", "EJ255 TURBO"), ("DONOR", "'05 OUTBACK XT"), ("BORES", "45° HONE"), ("TARGET", "'07 WRX")],
+                      ("crimson-motorsports.html", "NEXT: FORMULA SAE TEAM")),
+        original_page("crimson-motorsports", "formula-sae", "Formula SAE",
+                      "// HISTORY · CRIMSON MOTORSPORTS FORMULA SAE · FOUNDED 2024",
+                      [("ROLE", "FOUNDER & PRESIDENT"), ("CAPSTONES", "7 SENIORS"), ("STARTED", "SEPT 2024"), ("NOW", "ADVISOR")],
+                      ("fikst-robotics.html", "NEXT: FIKST ROBOTICS"), links=seas),
+        ("fikst-robotics", keep["fikst-robotics"]),
+        ("fikst-2024", keep["fikst-2024"]),
+        original_page("lincoln", "lincoln", "Lincoln Electric",
+                      "// MACHINE R&D: COMMERCIAL ENGINE DRIVES · SUMMER INTERNSHIP · 2023", None,
+                      ("raynmaker.html", "NEXT: THE RAYNMAKER")),
+        original_page("raynmaker", "raynmaker", "The RaynMaker",
+                      "// REMOTE CONTROL VEHICLE · COMPUTER AIDED DESIGN COURSE · 2022", None,
+                      ("fsae-suspension.html", "BACK TO: FSAE REAR SUSPENSION")),
+    ]
 
 
 def main():

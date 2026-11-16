@@ -1,0 +1,491 @@
+[
+ {
+  "t": "h1",
+  "lvl": 0,
+  "v": "EJ255 Engine Rebuild"
+ },
+ {
+  "t": "h1",
+  "lvl": 0,
+  "v": "<a href=\"#h.286jwc6src8\"></a>Personal Project | 2024-25"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Over my Winter break, I wanted to occupy my time with a fun engineering project that would enhance my knowledge of mechanical systems, broaden my hands-on experience and technical intuition, as well as provide me with a working engine for later use. This project was motivated by my interest in automotive and my desire to eventually put this engine into a 2007 Subaru WRX. My brother, who had done a similar project, was there to help me pull the engine from the junkyard."
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "We went to a junkyard in Buffalo and found a 2005 Subaru Outback 2.5 XT that had our desired turbocharged boxer engine. We took off the oil drain plug to ensure the oil did not have metal shavings, for that would indicate damage to the engine block. We then worked to take the engine out of the engine bay, which included taking off numerous bolts and hoses that held the engine accessories in place. Then we took the engine to our garage."
+ },
+ {
+  "t": "img",
+  "v": "ej255_01_2005-subaru-outback-2-5-xt.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "2005 Subaru Outback 2.5 XT"
+ },
+ {
+  "t": "img",
+  "v": "ej255_02_subaru-outback-engine-bay.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Subaru Outback Engine Bay"
+ },
+ {
+  "t": "h2",
+  "lvl": 0,
+  "v": "<strong>Disassembly</strong>"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "After placing the engine on an engine stand I acquired, I..."
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Took off the exhaust manifold and other remaining accessories and pipes/hoses"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Plugged all the holes that lead into the block with paper towels and did a general cleaning of the outside"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Took off the timing components in the front of the engine, which left the long block remaining"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Removed the cam covers and camshafts off of the heads"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Removed the heads off both sides of the block. I used a valve compressor tool to compress all the springs holding the valves in"
+ },
+ {
+  "t": "li",
+  "lvl": 2,
+  "v": "I carefully handled these for any minor bends would compromise the whole valve. I also kept track of where each of the valves and springs went, for it’s crucial that they remain the same orientation"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Took out the pistons, split the block, and took out the crankshaft and connecting rods"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "During this whole process, I carefully labeled everything, including bolts, pistons, small accessories, etc."
+ },
+ {
+  "t": "img",
+  "v": "ej255_03.jpg"
+ },
+ {
+  "t": "img",
+  "v": "ej255_04_short-block-heads-removed.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Short Block (Heads Removed)"
+ },
+ {
+  "t": "img",
+  "v": "ej255_05_engine-top-view.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Engine Top View"
+ },
+ {
+  "t": "h3",
+  "lvl": 0,
+  "v": "<strong>Cleaning</strong>"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Next, I carefully cleaned all the components, making sure sensitive moving parts remained oil to prevent flash rusting. This was done mainly with Purple Power Degreaser, Brake Cleaner, Various Brushes, a microfiber cloth, an air compressor, and a toothbrush which worked overtime. This stage of the process took quite some time and the Buffalo Winter definitely did not help. In fact, the cold made it quite difficult to continue working on this project, so I eventually deemed it necessary to stop. While I was eager to work on this rebuild, I also wanted to make sure I was enjoying it. I decided to re-oil and wrap everything with plastic wrap, with an emphasis on careful labeling."
+ },
+ {
+  "t": "img",
+  "v": "ej255_06_cylinder-heads-before-and-after-cleaning.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Cylinder Heads Before and After Cleaning"
+ },
+ {
+  "t": "img",
+  "v": "ej255_07_removed-cam-covers-and-camshafts.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Removed Cam Covers and Camshafts"
+ },
+ {
+  "t": "img",
+  "v": "ej255_08_passenger-side-head-bolts.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Passenger Side Head &amp; Bolts"
+ },
+ {
+  "t": "img",
+  "v": "ej255_09_valve-compressor-tool-in-action-on-head.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Valve Compressor Tool in Action (On Head)"
+ },
+ {
+  "t": "img",
+  "v": "ej255_10_buckets-valves-springs-and-retaining-clips-driver-.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Buckets, Valves &amp; Springs, and Retaining Clips (Driver's Side)"
+ },
+ {
+  "t": "h2",
+  "lvl": 0,
+  "v": "<strong>Preparation</strong>"
+ },
+ {
+  "t": "h3",
+  "lvl": 0,
+  "v": "<strong>Valve Lapping</strong>"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "The valves shall be lapped in order to ensure a proper seal between the edge of the valves and the head. This is done with valve lapping compound that sands down both mating surfaces together to ensure a smooth seal and contact. This is done by applying the compound onto the valve, seating it inside the head and rotating it back and forth. The compound breaks down into finer grit as the valve is rotated, so completion is detected via sound as the grinding gets quieter."
+ },
+ {
+  "t": "img",
+  "v": "ej255_11_valve-with-lapping-compound.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Valve with Lapping Compound"
+ },
+ {
+  "t": "img",
+  "v": "ej255_12_valve-lapping-handle-tool-for-rotating-valve.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Valve Lapping Handle Tool (For Rotating Valve)"
+ },
+ {
+  "t": "img",
+  "v": "ej255_13_valve-before-lapping-left-and-after-right.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Valve Before Lapping (Left) and After (Right)"
+ },
+ {
+  "t": "h3",
+  "lvl": 0,
+  "v": "<strong>Head Flatness</strong>"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "The heads can be subjected to warping as a result of the engine overheating. The heads shall be checked for warpage, for warped heads can cause a head gasket failure. This is done with a machinists level and feeler gauges. The feeler gauge is inserted between the head and level in various locations to ensure flatness is to the specification set by Subaru. Thankfully my heads were within spec. Otherwise, the heads shall be decked by a machinist or done at home a somewhat sketchier way with sandpaper and a flat tile."
+ },
+ {
+  "t": "img",
+  "v": "ej255_14_head-machinist-level-and-feeler-gauges.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Head, Machinist Level and Feeler Gauges"
+ },
+ {
+  "t": "h3",
+  "lvl": 0,
+  "v": "<strong>Honing / Deglazing</strong>"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "The cylinder walls can become glazed over the engines lifetime. It is a good idea to deglaze or hone the cylinder walls for proper piston ring seating and sealing. This was done with a specialized tool that attaches to a hand drill. This attachment has three stones that scrape the cylinder walls. It is up to the user to achieve a 45° cross hatch pattern on the walls by controlling the rpm of the drill as well as the periodic longitudinal motion of the drill into the cylinder."
+ },
+ {
+  "t": "img",
+  "v": "ej255_15_one-half-of-short-block-and-cylinder-honing-drill-.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "One Half of Short Block and Cylinder Honing Drill Attachment"
+ },
+ {
+  "t": "img",
+  "v": "ej255_16_honed-cylinder-wall.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Honed Cylinder Wall"
+ },
+ {
+  "t": "h2",
+  "lvl": 0,
+  "v": "<strong>Assembly</strong>"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "The engine remained disassembled and wrapped for some time, due to being away from home. It was a dilemma whether to assemble it or not due to the unknown period of time between assembly and actual use. Also, full assembly would make the engine significantly harder to transport and require additional equipment to do so."
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "I decided to fully assemble the short block and the heads. However, I would not connect the heads to the short block to allow transportability until the engine is ready for use. Installation of the heads onto the short block is the least challenging part of the assembly process. In addition, the engine can be reoiled prior to full assembly/initial startup."
+ },
+ {
+  "t": "h3",
+  "lvl": 0,
+  "v": "<strong>Short Block Assembly</strong>"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Connecting rod bearings replaced"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Connecting rods attached to crankshaft and torqued to spec"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Main bearings replaced"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Four O-Rings Replaced"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Permatex gasket applied to short block"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Short block bolted together and torqued to spec"
+ },
+ {
+  "t": "img",
+  "v": "ej255_17_connecting-rods-replacement-bearings-and-crankshaf.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Connecting Rods, Replacement Bearings and Crankshaft"
+ },
+ {
+  "t": "img",
+  "v": "ej255_18_assembled-crankshaft-and-connecting-rods.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Assembled Crankshaft and Connecting Rods"
+ },
+ {
+  "t": "img",
+  "v": "ej255_19_crankshaft-assembly-front-view.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Crankshaft Assembly Front View"
+ },
+ {
+  "t": "img",
+  "v": "ej255_20_separated-short-block-pre-assembly.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Separated Short Block Pre-Assembly"
+ },
+ {
+  "t": "img",
+  "v": "ej255_21_main-bearings-replaced.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Main Bearings Replaced"
+ },
+ {
+  "t": "img",
+  "v": "ej255_22_assembled-short-block-front-view.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Assembled Short Block (Front View)"
+ },
+ {
+  "t": "img",
+  "v": "ej255_23_assembled-short-block-side-view.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Assembled Short Block (Side View)"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Piston ring gaps checked with feeler gauge &amp; confirmed within spec"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Piston rings replaced"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Pistons reinstalled onto connecting rods (NONTRIVIAL)"
+ },
+ {
+  "t": "img",
+  "v": "ej255_24_checking-piston-ring-gaps.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Checking Piston Ring Gaps"
+ },
+ {
+  "t": "img",
+  "v": "ej255_25_piston-with-replaced-rings.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Piston with Replaced Rings"
+ },
+ {
+  "t": "img",
+  "v": "ej255_26_short-block-with-installed-pistons.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Short Block with Installed Pistons"
+ },
+ {
+  "t": "img",
+  "v": "ej255_27_short-block-side-view.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Short Block Side View"
+ },
+ {
+  "t": "h3",
+  "lvl": 0,
+  "v": "<strong>Heads Assembly</strong>"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Valve stem seals replaced"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Valves inserted"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Valve springs recompressed using OEM spring compressor tool"
+ },
+ {
+  "t": "li",
+  "lvl": 1,
+  "v": "Valve spring retaining clips reinstalled"
+ },
+ {
+  "t": "img",
+  "v": "ej255_28_reinstalling-valves-springs-into-head.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Reinstalling Valves &amp; Springs Into Head"
+ },
+ {
+  "t": "h2",
+  "lvl": 0,
+  "v": "<strong>Assembled Short Block &amp; Heads</strong>"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "As mentioned earlier, the heads will not get attached to the short block yet. However, for the sake of visualization, I placed them where they would attach. The new head gaskets will be installed then."
+ },
+ {
+  "t": "img",
+  "v": "ej255_29.jpg"
+ },
+ {
+  "t": "img",
+  "v": "ej255_30.jpg"
+ },
+ {
+  "t": "img",
+  "v": "ej255_31_img-9750-mov.jpg"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Home"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Resume"
+ },
+ {
+  "t": "p",
+  "lvl": 0,
+  "v": "Projects"
+ }
+]
