@@ -67,6 +67,7 @@ def index():
     b = ""
     home = json.load(open(os.path.join(ROOT, "tools", "content", "home.json")))
     intro = [x["v"] for x in home if x["t"] == "p"][1:5]
+    intro = [v.replace("picture to the left", "picture to the right") for v in intro]
     intro_html = "\n".join(f'      <p class="lede">{v}</p>' for v in intro)
     crimson_html = crimson_section(b)
     xp = [
