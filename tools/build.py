@@ -95,8 +95,6 @@ def index():
     cards = [
         ("projects/fsae-suspension.html", "thumbs/fsae.jpg", "FSAE rear suspension upright and hub",
          "[ STUDENT TEAM ] 2024–25", "FSAE Rear Suspension", "Senior capstone: pushrod double wishbone, machined hub and upright, rig-validated camber.", ""),
-        ("projects/fikst-robotics.html", "logos/fikst.jpg", "Fikst Product Development logo",
-         "[ INDUSTRY ] 2025–NOW", "Robotics Production Parts", "Fikst: silicone ingress seal, drop-in harness tray, chassis changes.", ' class="logo-fit"'),
         ("projects/fikst-2024.html", "site/home/home_10_biomedical-device-engineering.jpg", "Biomedical device engineering at Fikst",
          "[ INTERNSHIP ] 2024", "Biomedical Device Engineering", "Fikst: molded wear pad, quarter-turn tool sets, test rigs, heat exchanger.", ""),
         ("projects/lincoln.html", "thumbs/welding.jpg", "Rayhaan at Lincoln Electric",
@@ -409,7 +407,7 @@ def pages():
     <p>I put funds into designing and fabricating our own parts instead of buying assemblies (and banned team merch until we had something that looked like a car). I ran elections for the 2025–26 board, led visits to MIT's FSAE team and the FSAE Electric competition, and stay on as an advisor. The <a href="https://seas.harvard.edu/news/2025/07/zooming-future">Harvard SEAS article</a> covers the story.</p>
     </div>
     {gallery(b, [("formula-sae-team/01_team-at-competition.jpg", "At the FSAE Electric competition"), ("formula-sae-team/03_club-group-photo.jpg", "Club members"), ("formula-sae-team/04_club-work-session.jpg", "Weekly work session"), ("formula-sae-team/07_chassis-edwin.jpg", "Chassis capstone"), ("formula-sae-team/10_powertrain-capstone.jpg", "Powertrain capstone"), ("formula-sae-team/11_aero-capstone.jpg", "Aero capstone")])}""",
-        ("fikst-robotics.html", "NEXT: FIKST ROBOTICS")))
+        ("fikst-2024.html", "NEXT: FIKST PRODUCT DEVELOPMENT")))
 
     out.append(project(
         "fikst-robotics", "Robotics Production Parts", "// FIKST PRODUCT DEVELOPMENT · MECHANICAL ENGINEER I · 2025–PRESENT",
@@ -659,7 +657,7 @@ def pages():
                     ("crimson-motorsports.html", "NEXT: FORMULA SAE")),
         layout_page("crimson-motorsports", "layout-formula-sae.json", "formula-sae", "Formula SAE",
                     "History | Crimson Motorsports Formula SAE | Founded 2024", None,
-                    ("fikst-robotics.html", "NEXT: FIKST ROBOTICS")),
+                    ("fikst-2024.html", "NEXT: FIKST PRODUCT DEVELOPMENT")),
         ("fikst-robotics", prev["fikst-robotics"]),
         ("fikst-2024", prev["fikst-2024"]),
         layout_page("lincoln", "layout-lincoln-electric-work.json", "lincoln", "Lincoln Electric",
@@ -758,7 +756,7 @@ def pages():
     prev = dict(_old_pages3())
     ej = layout_page("ej255", "layout-ej255-engine-rebuild.json", "ej255", "EJ255 Engine Rebuild", "Personal Project | 2024-25",
                      [("ENGINE", "EJ255 TURBO"), ("DONOR", "SUBARU OUTBACK 2.5 XT"), ("YEAR", "2005")],
-                     ("fikst-robotics.html", "NEXT: FIKST ROBOTICS"))
+                     ("fikst-2024.html", "NEXT: FIKST PRODUCT DEVELOPMENT"))
     out = []
     for slug, html in _old_pages3():
         if slug == "crimson-motorsports":
@@ -782,18 +780,24 @@ def formula_sae_top():
     return html
 
 
+HIDDEN_PAGES = {"fikst-robotics"}  # on hold: Rayhaan will add content later
+
+
 def main():
     os.makedirs(os.path.join(ROOT, "projects"), exist_ok=True)
     with open(os.path.join(ROOT, "index.html"), "w") as f:
         f.write(index())
     for slug, html in pages():
+        if slug in HIDDEN_PAGES:
+            continue
         with open(os.path.join(ROOT, "projects", slug + ".html"), "w") as f:
             f.write(html)
     with open(os.path.join(ROOT, "formula-sae.html"), "w") as f:
         f.write(formula_sae_top())
-    stale = os.path.join(ROOT, "projects", "crimson-motorsports.html")
-    if os.path.exists(stale):
-        os.remove(stale)
+    for stale in ["crimson-motorsports"] + sorted(HIDDEN_PAGES):
+        path = os.path.join(ROOT, "projects", stale + ".html")
+        if os.path.exists(path):
+            os.remove(path)
     print("built index + projects")
 
 
