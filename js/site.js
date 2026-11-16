@@ -145,6 +145,9 @@
   var rnd = function () { return pool[Math.floor(Math.random() * pool.length)]; };
   var starts = [2500, 2760, 3030, 3290], dur = 1100, step = 60;
   document.querySelectorAll('.hero .lede').forEach(function (el, k) {
+    el.querySelectorAll('.dir-wide, .dir-narrow').forEach(function (s) {
+      if (getComputedStyle(s).display === 'none') s.remove(); else s.replaceWith(s.textContent);
+    });
     var final = el.textContent;
     el.setAttribute('aria-label', final);
     el.innerHTML = '';
@@ -172,5 +175,29 @@
       });
       if (left) setTimeout(tick, step); else el.textContent = final;
     }, starts[k] !== undefined ? starts[k] : 3290 + (k - 3) * 260);
+  });
+})();
+
+// Project cards: values descramble when the hover readout opens.
+(function () {
+  if (!window.matchMedia('(hover: hover)').matches) return;
+  var pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  document.querySelectorAll('.card').forEach(function (card) {
+    var vals = [].slice.call(card.querySelectorAll('.card-spec .v'));
+    if (!vals.length) return;
+    vals.forEach(function (v) { v.dataset.final = v.textContent; });
+    var timer = null;
+    card.addEventListener('mouseenter', function () {
+      clearInterval(timer);
+      var t0 = Date.now(), dur = 420;
+      timer = setInterval(function () {
+        var p = Math.min(1, (Date.now() - t0) / dur);
+        vals.forEach(function (v, k) {
+          var f = v.dataset.final, q = Math.max(0, Math.min(1, p * 1.4 - k * 0.15)), n = Math.floor(f.length * q);
+          v.textContent = f.slice(0, n) + f.slice(n).replace(/[^ ·]/g, function () { return pool[Math.floor(Math.random() * pool.length)]; });
+        });
+        if (p >= 1) { clearInterval(timer); vals.forEach(function (v) { v.textContent = v.dataset.final; }); }
+      }, 40);
+    });
   });
 })();

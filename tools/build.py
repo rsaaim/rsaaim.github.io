@@ -67,7 +67,7 @@ def index():
     b = ""
     home = json.load(open(os.path.join(ROOT, "tools", "content", "home.json")))
     intro = [x["v"] for x in home if x["t"] == "p"][1:5]
-    intro = [v.replace("picture to the left", "picture to the right") for v in intro]
+    intro = [v.replace("picture to the left", 'picture <span class="dir-wide">to the right</span><span class="dir-narrow">below</span>') for v in intro]
     intro_html = "\n".join(f'      <p class="lede">{v}</p>' for v in intro)
     crimson_html = crimson_section(b)
     xp = [
@@ -107,12 +107,23 @@ def index():
         ("projects/raynmaker.html", "thumbs/raynmaker.jpg", "The RaynMaker remote control robot",
          "[ COURSE PROJECT ] 2022", "The RaynMaker", "ES51 competition robot: plow and servo scoop, screwdriver-sourced gearbox.", ""),
     ]
+    specs = {
+        "projects/fsae-suspension.html": [("LAYOUT", "DOUBLE WISHBONE PUSHROD"), ("CAD", "SOLIDWORKS · MATLAB"), ("MFG", "LATHE · MILL · WATERJET · TIG")],
+        "projects/fikst-2024.html": [("SCOPE", "TEST FIXTURES · TOOLING"), ("DFM", "INJECTION-MOLDED WEAR PAD"), ("CAD", "SOLIDWORKS · DRAWINGS")],
+        "projects/lincoln.html": [("SCOPE", "MACHINE CONVERSION"), ("SWAP", "BRUSHLESS MOTOR · PCB"), ("BUILT", "AUTO IDLE · PORTABILITY KIT")],
+        "projects/fea.html": [("TOOLS", "MATLAB · ABAQUS"), ("RESULT", "7.3% LIGHTER @ SF 2.0"), ("SWEEP", "25 STEPS · ~50K ELEMENTS")],
+        "projects/ej255.html": [("DONOR", "2005 OUTBACK 2.5 XT"), ("WORK", "BEARINGS · VALVES · HONE"), ("TARGET", "2007 SUBARU WRX")],
+        "projects/raynmaker.html": [("CAD", "SOLIDWORKS"), ("MFG", "LASER · MILL · 3D PRINT · MOLD"), ("DRIVE", "REAR WHEELS · SERVO SCOOP")],
+    }
+    def card_spec(h):
+        rows = "".join(f'<li><span class="k">{k}</span><span class="v">{v}</span></li>' for k, v in specs.get(h, []))
+        return f'<ul class="card-spec" aria-hidden="true">{rows}</ul>' if rows else ""
     def card_media(i, a, c):
         if i is None:
             return ('<div class="card-nda"><span class="tag">[ UNDER NDA ]</span><span>CLIENT DETAILS WITHHELD</span></div>')
         return f'<img src="{img(b, i)}" alt="{a}" loading="lazy"{c}>'
     cards_html = "".join(f"""
-      <a class="card reveal" href="{h}">{card_media(i, a, c)}
+      <a class="card reveal" href="{h}"><div class="card-media">{card_media(i, a, c)}{card_spec(h)}</div>
         <div class="card-body"><span class="tag-line">{t}</span><h3>{n}</h3></div></a>""" for h, i, a, t, n, d, c in cards)
 
     skills = [
@@ -805,17 +816,26 @@ def new_tab_external(html):
     return _re.sub(r'(<a [^>]*href="https?://seas\.harvard\.edu[^"]*")(?![^>]*target=)', r'\1 target="_blank" rel="noopener"', html)
 
 
+def webp(html):
+    """Point image references at the compressed .webp copy when one exists."""
+    def sub(m):
+        rel = m.group(2)
+        w = os.path.splitext(rel)[0] + ".webp"
+        return m.group(1) + (w if os.path.exists(os.path.join(ROOT, w)) else rel)
+    return re.sub(r'((?:\.\./)?)(assets/img/[^"\'\s)]+\.(?:jpe?g|png))', sub, html, flags=re.I)
+
+
 def main():
     os.makedirs(os.path.join(ROOT, "projects"), exist_ok=True)
     with open(os.path.join(ROOT, "index.html"), "w") as f:
-        f.write(title_block(new_tab_external(index()), "index"))
+        f.write(webp(title_block(new_tab_external(index()), "index")))
     for slug, html in pages():
         if slug in HIDDEN_PAGES:
             continue
         with open(os.path.join(ROOT, "projects", slug + ".html"), "w") as f:
-            f.write(title_block(new_tab_external(html), slug))
+            f.write(webp(title_block(new_tab_external(html), slug)))
     with open(os.path.join(ROOT, "formula-sae.html"), "w") as f:
-        f.write(title_block(new_tab_external(formula_sae_top()), "formula-sae"))
+        f.write(webp(title_block(new_tab_external(formula_sae_top()), "formula-sae")))
     for stale in ["crimson-motorsports"] + sorted(HIDDEN_PAGES):
         path = os.path.join(ROOT, "projects", stale + ".html")
         if os.path.exists(path):
