@@ -95,7 +95,7 @@ def index():
 
     cards = [
         ("projects/fsae-suspension.html", "thumbs/fsae.jpg", "FSAE rear suspension upright and hub",
-         "[ STUDENT TEAM ] 2024–25", "FSAE Rear Suspension", "Senior capstone: pushrod double wishbone, machined hub and upright, rig-validated camber.", ""),
+         "[ SENIOR CAPSTONE ] 2024–25", "FSAE Rear Suspension", "Senior capstone: pushrod double wishbone, machined hub and upright, rig-validated camber.", ""),
         ("projects/fikst-2024.html", "site/home/home_10_biomedical-device-engineering.jpg", "Biomedical device engineering at Fikst",
          "[ INTERNSHIP ] 2024", "Biomedical Device Engineering", "Fikst: molded wear pad, quarter-turn tool sets, test rigs, heat exchanger.", ""),
         ("projects/lincoln.html", "thumbs/welding.jpg", "Rayhaan at Lincoln Electric",
