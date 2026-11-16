@@ -259,3 +259,6 @@ a:hover { color: var(--accent-hover); }
 .xp-inner > .xp-logo img { width: 100%; height: auto; max-height: 180px; object-fit: contain; }
 .card img.logo-fit { object-fit: contain; background: #FFFFFF; padding: 30px; }
 @media (max-width: 760px) { .xp-logo { min-height: 160px; } }
+#contact .contact-box { display: inline-flex; width: auto; max-width: 100%; }
+.xp:hover { transform: none; background: var(--line-2); }
+.xp-body { justify-content: center; }

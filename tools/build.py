@@ -73,7 +73,7 @@ def index():
         dict(href="projects/fikst-robotics.html", img="logos/fikst.jpg", alt="Fikst Product Development logo", logo="#FFFFFF", org="FIKST PRODUCT DEVELOPMENT · WILMINGTON, MA",
              dates="SEP 2025 — PRESENT", cur=True, title="Mechanical Engineer I",
              text="Production parts for an industrial and warehouse robotics client: a molded silicone ingress seal, a drop-in nylon harness tray, and chassis changes backed by bolted-joint and tolerance-stack analysis."),
-        dict(href="projects/fikst-2024.html", img="fikst-2024/06_bumper-compression-test.jpg", alt="Rubber bumper compression test on a Mark-10 force stand",
+        dict(href="projects/fikst-2024.html", img="logos/fikst.jpg", alt="Fikst Product Development logo", logo="#FFFFFF",
              org="FIKST PRODUCT DEVELOPMENT · WILMINGTON, MA", dates="JUN — AUG 2024", title="Mechanical Engineering Intern",
              text="Medical device work: an injection-molded wear pad, quarter-turn nut tool sets, bumper and valve test rigs, and a blood heat-exchanger study for upper management."),
         dict(href="projects/lincoln.html", img="logos/lincoln.jpg", alt="Lincoln Electric logo", logo="#BD2B2D",
@@ -88,18 +88,18 @@ def index():
                   else f'<img src="{img(b, x["img"])}" alt="{x["alt"]}" loading="lazy">')
         dates = f'<span class="acc">{x["dates"]}</span>' if x.get("cur") else f'<span>{x["dates"]}</span>'
         xp_html += f"""
-      <a class="xp chamfer reveal" href="{x['href']}"><div class="xp-inner chamfer">{left}
+      <div class="xp chamfer reveal"><div class="xp-inner chamfer">{left}
         <div class="xp-body"><div class="meta"><span>{x['org']}</span>{dates}</div>
-          <h3>{x['title']}</h3><p>{x['text']}</p><span class="more">READ MORE &gt;&gt;</span></div></div></a>"""
+          <h3>{x['title']}</h3></div></div></div>"""
 
     cards = [
-        ("projects/fsae-suspension.html", "site/home/home_09_fsae-rear-suspension.jpg", "FSAE rear suspension assembly",
+        ("projects/fsae-suspension.html", "thumbs/fsae.jpg", "FSAE rear suspension upright and hub",
          "[ STUDENT TEAM ] 2024–25", "FSAE Rear Suspension", "Senior capstone: pushrod double wishbone, machined hub and upright, rig-validated camber.", ""),
         ("projects/fikst-robotics.html", "logos/fikst.jpg", "Fikst Product Development logo",
          "[ INDUSTRY ] 2025–NOW", "Robotics Production Parts", "Fikst: silicone ingress seal, drop-in harness tray, chassis changes.", ' class="logo-fit"'),
         ("projects/fikst-2024.html", "site/home/home_10_biomedical-device-engineering.jpg", "Biomedical device engineering at Fikst",
          "[ INTERNSHIP ] 2024", "Biomedical Device Engineering", "Fikst: molded wear pad, quarter-turn tool sets, test rigs, heat exchanger.", ""),
-        ("projects/lincoln.html", "site/home/home_11_welding-concept-machine.jpg", "Rayhaan at Lincoln Electric",
+        ("projects/lincoln.html", "thumbs/welding.jpg", "Rayhaan at Lincoln Electric",
          "[ INTERNSHIP ] 2023", "Welding Concept Machine", "Lincoln Electric: brushless motor swap, idle logic, portability kit.", ""),
         ("projects/fea.html", "thumbs/fea.jpg", "Von Mises stress plot of the suspension mounting tab",
          "[ STUDENT TEAM ] 2024", "Suspension Mounting FEA", "Parametric MATLAB + Abaqus sweep: 7.3% lighter at a safety factor of 2.", ""),
@@ -114,7 +114,7 @@ def index():
         return f'<img src="{img(b, i)}" alt="{a}" loading="lazy"{c}>'
     cards_html = "".join(f"""
       <a class="card reveal" href="{h}">{card_media(i, a, c)}
-        <div class="card-body"><span class="tag-line">{t}</span><h3>{n}</h3><p>{d}</p></div></a>""" for h, i, a, t, n, d, c in cards)
+        <div class="card-body"><span class="tag-line">{t}</span><h3>{n}</h3></div></a>""" for h, i, a, t, n, d, c in cards)
 
     skills = [
         ("Software", "Solidworks, HSM Works, Abaqus, Comsol, Autodesk Fusion 360"),
@@ -182,7 +182,7 @@ def gallery(base, items, wide=False):
 
 
 def specs(pairs):
-    return '<div class="specs">' + "".join(f'<div><p class="k">{k}</p><p class="v">{v}</p></div>' for k, v in pairs) + "</div>"
+    return ('<div class="specs">' + "".join(f'<div><p class="k">{k}</p><p class="v">{v}</p></div>' for k, v in pairs) + "</div>") if pairs else ""
 
 
 def project(slug, title, eyebrow, lede, spec_pairs, body, nxt):
@@ -414,7 +414,7 @@ def pages():
     out.append(project(
         "fikst-robotics", "Robotics Production Parts", "// FIKST PRODUCT DEVELOPMENT · MECHANICAL ENGINEER I · 2025–PRESENT",
         "I design mechanical components for an industrial and warehouse robotics client and take them from concept through production release.",
-        [("CLIENT", "INDUSTRIAL ROBOTICS"), ("PROCESSES", "INJECTION MOLDING"), ("ANALYSIS", "JOINTS · STACKS"), ("OUTPUT", "RELEASED DRAWINGS")],
+        [],
         lambda b: """<div class="nda-panel"><span class="tag">[ UNDER NDA ]</span><span>Client name, product images and part geometry are withheld. This page describes the engineering problems and my approach in general terms.</span></div>
     <div class="prose">
     <h2>Liquid-ingress seal</h2>
@@ -648,8 +648,7 @@ def pages():
     prev = dict(_old_pages2())
     return [
         layout_page("fsae-suspension", "layout-fsae-rear-suspension.json", "fsae-rear-suspension", "FSAE Rear Suspension",
-                    "Senior Capstone | Crimson Motorsports Formula SAE | 2024–2025",
-                    [("TYPE", "PUSHROD DOUBLE WISHBONE"), ("STATIC CAMBER", "−1.25°"), ("HUB", "7075 AL"), ("UPRIGHT", "6061 AL")],
+                    "Senior Capstone | Crimson Motorsports Formula SAE | 2024–2025", None,
                     ("fea.html", "NEXT: SUSPENSION MOUNTING FEA")),
         layout_page("fea", "layout-fsae-suspension-mounting-fea.json", "fsae-fea", "FSAE Suspension Mounting FEA",
                     "Crimson Motorsports Formula SAE | FEA Course Final Project | 2024",
