@@ -60,11 +60,11 @@
       if (i < spans.length) {
         spans[i].style.visibility = 'visible';
         spans[i].after(caret);
-        i++; setTimeout(step, 55);
+        i++; setTimeout(step, 80);
       } else {
         setTimeout(function () { caret.remove(); }, 1200);
       }
-    }, 200);
+    }, 290);
   }
   var glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#/<>';
   document.querySelectorAll('[data-scramble]').forEach(function (el, k) {
@@ -75,8 +75,8 @@
       el.textContent = final.split('').map(function (c, j) {
         return j < settled || c === ' ' ? c : glyphs[Math.floor(Math.random() * glyphs.length)];
       }).join('');
-      if (frame < total) setTimeout(tick, 40); else el.textContent = final;
-    }, 850 + k * 160);
+      if (frame < total) setTimeout(tick, 58); else el.textContent = final;
+    }, 1230 + k * 230);
   });
-  setTimeout(function () { root.classList.remove('boot'); }, 3500);
+  setTimeout(function () { root.classList.remove('boot'); }, 5200);
 })();

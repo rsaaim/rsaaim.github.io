@@ -304,23 +304,23 @@ a.tb-v:hover { color: var(--accent); }
 @keyframes bootShow { to { visibility: visible; } }
 @keyframes caretBlink { 50% { opacity: 0; } }
 
-html.boot .hero .eyebrow { animation: bootIn .4s ease-out both; }
-html.boot .hero h1 { visibility: hidden; animation: bootShow 0s 3s forwards; }
-html.boot .hero .readout { animation: bootIn .3s .7s both; }
-html.boot .hero .readout span { animation: bootFade .35s ease-out both; }
-html.boot .hero .readout span:nth-child(1) { animation-delay: .80s; }
-html.boot .hero .readout span:nth-child(2) { animation-delay: .88s; }
-html.boot .hero .readout span:nth-child(3) { animation-delay: .96s; }
-html.boot .hero .readout span:nth-child(4) { animation-delay: 1.04s; }
-html.boot .hero .lede { animation: bootFade .6s ease-out both; }
-html.boot .hero .lede:nth-of-type(2) { animation-delay: 1.15s; }
-html.boot .hero .lede:nth-of-type(3) { animation-delay: 1.27s; }
-html.boot .hero .lede:nth-of-type(4) { animation-delay: 1.39s; }
-html.boot .hero .lede:nth-of-type(5) { animation-delay: 1.51s; }
-html.boot .bracket-frame::before { animation: bootTL .6s .25s cubic-bezier(.2,.8,.2,1) both; }
-html.boot .bracket-frame::after { animation: bootTR .6s .25s cubic-bezier(.2,.8,.2,1) both; }
-html.boot .bracket-frame .br-b::before { animation: bootBL .6s .25s cubic-bezier(.2,.8,.2,1) both; }
-html.boot .bracket-frame .br-b::after { animation: bootBR .6s .25s cubic-bezier(.2,.8,.2,1) both; }
-html.boot .bracket-frame img { animation: bootScan .9s .45s cubic-bezier(.4,0,.2,1) both; }
-html.boot .bracket-frame .img-caption { animation: bootFade .4s 1.25s ease-out both; }
+html.boot .hero .eyebrow { animation: bootIn 0.58s ease-out both; }
+html.boot .hero h1 { visibility: hidden; animation: bootShow 0.00s 4.35s forwards; }
+html.boot .hero .readout { animation: bootIn 0.43s 1.01s both; }
+html.boot .hero .readout span { animation: bootFade 0.51s ease-out both; }
+html.boot .hero .readout span:nth-child(1) { animation-delay: 1.16s; }
+html.boot .hero .readout span:nth-child(2) { animation-delay: 1.28s; }
+html.boot .hero .readout span:nth-child(3) { animation-delay: 1.39s; }
+html.boot .hero .readout span:nth-child(4) { animation-delay: 1.51s; }
+html.boot .hero .lede { animation: bootFade 0.87s ease-out both; }
+html.boot .hero .lede:nth-of-type(2) { animation-delay: 1.67s; }
+html.boot .hero .lede:nth-of-type(3) { animation-delay: 1.84s; }
+html.boot .hero .lede:nth-of-type(4) { animation-delay: 2.02s; }
+html.boot .hero .lede:nth-of-type(5) { animation-delay: 2.19s; }
+html.boot .bracket-frame::before { animation: bootTL 0.87s 0.36s cubic-bezier(.2,.8,.2,1) both; }
+html.boot .bracket-frame::after { animation: bootTR 0.87s 0.36s cubic-bezier(.2,.8,.2,1) both; }
+html.boot .bracket-frame .br-b::before { animation: bootBL 0.87s 0.36s cubic-bezier(.2,.8,.2,1) both; }
+html.boot .bracket-frame .br-b::after { animation: bootBR 0.87s 0.36s cubic-bezier(.2,.8,.2,1) both; }
+html.boot .bracket-frame img { animation: bootScan 1.30s 0.65s cubic-bezier(.4,0,.2,1) both; }
+html.boot .bracket-frame .img-caption { animation: bootFade 0.58s 1.81s ease-out both; }
 .type-caret { display: inline-block; width: .5em; height: .8em; margin-left: .06em; background: var(--accent); vertical-align: baseline; animation: caretBlink .7s steps(1) infinite; }
